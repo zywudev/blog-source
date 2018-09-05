@@ -4,11 +4,11 @@
 
 # Site
 
-title: wuzy 
-subtitle:
-description: O ever youthful, O ever weeping
+title: ç©ºå¸†èˆ¹
+subtitle: 
+description:
 author: wuzy
-language: zh-Hans
+language: zh-CN
 timezone:
 
 
@@ -41,7 +41,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: true
   tab_replace:
@@ -71,8 +71,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: scribble
-#RSS¶©ÔÄ
+theme: maupassant
+#RSSÂ¶Â©Ã”Ã„
 plugin:
 - hexo-generator-feed
 #Feed Atom
@@ -81,20 +81,30 @@ type: atom
 path: atom.xml
 limit: 20
 
+search:
+  path: search.xml
+  field: post
 
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: git@github.com:zywudev/zywudev.github.io.git
+  repo:
+    github: git@github.com:zywudev/zywudev.github.io.git
   branch: master
+
+
+
 
 # Comment
 #duoshuo_shortname:
 	#wuzhangyang
 	
-# Ìí¼ÓËÑË÷
+# ÃŒÃ­Â¼Ã“Ã‹Ã‘Ã‹Ã·
 #search:
   #path: search.xml
  # field: post
+
+baidusitemap:
+  path: baidusitemap.xml
