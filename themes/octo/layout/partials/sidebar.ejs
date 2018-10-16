@@ -1,0 +1,18 @@
+<aside class="sidebar">
+    <%
+        const sections = Object.keys(theme.sidebars).filter(key => !!theme.sidebars[key]);
+        sections.forEach(function(key, index) {
+            const sectionClass = (index % 2 == 0) ? 'odd' : 'even'; // remember that 'odd' starts from index=0
+            const type = key.toLowerCase();
+            if (type == 'recent') {
+                %><%- partial('partials/sidebar-recent', {sectionClass}) %><%
+            } else if (type == 'wechat') {
+                %><%- partial('partials/sidebar-wechat', {sectionClass}) %><%
+            } else if (type == 'github') {
+                %><%- partial('partials/sidebar-github', {sectionClass}) %><%
+            } else if (type == 'featured') {
+                %><%- partial('partials/sidebar-featured', {sectionClass}) %><%
+            }
+        });
+    %>
+</aside>
