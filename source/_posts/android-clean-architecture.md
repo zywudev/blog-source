@@ -6,7 +6,7 @@ tags:
 
  Clean 一般是指，代码以洋葱的形状依据一定的依赖规则被划分为多层：内层对于外层一无所知。这就意味着**依赖只能由外向内**。
 
-![](http://om9o63aks.bkt.clouddn.com/FneK1RrTl0mCEVOQydNJCXJiv00v)
+![](https://github.com/zywudev/blog-source/raw/master/image/FneK1RrTl0mCEVOQydNJCXJiv00v.png)
 
 **Clean 架构的准则：**
 
@@ -34,7 +34,7 @@ tags:
 
 依据这些规则将工程分为三层：
 
-![](http://om9o63aks.bkt.clouddn.com/FiHNW7VqAGM0mduIOUbZJT3waAu6)
+![](https://github.com/zywudev/blog-source/blob/master/image/FiHNW7VqAGM0mduIOUbZJT3waAu6.png)
 
 ### Presentation Layer
 
@@ -48,7 +48,7 @@ MVC 或者 MVP 对应的地方，不处理 UI 以外的任何逻辑。
 
 ### Data Layer
 
-![](http://om9o63aks.bkt.clouddn.com/FhHTuUPyCcYBna7CGmYtsMG5OpLO)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FhHTuUPyCcYBna7CGmYtsMG5OpLO.png)
 
 所有系统需要的数据通过这一层的 Repository 获取， 这是一种 Repository 模式，具体看[这里](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff649690(v=pandp.10))。Repository 接口定义是在 Domain 层，接口表示怎么去存储或者访问数据，这些是业务逻辑，但是具体的实现与业务逻辑无关，应该交给 Data 层。
 

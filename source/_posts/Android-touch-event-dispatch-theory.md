@@ -2,12 +2,11 @@
 title: Android 事件分发原理
 date: 2018-10-10 17:13:11
 tags:
-toc: true
 ---
 
 ## 事件分发流程图
 
-![](http://om9o63aks.bkt.clouddn.com/FmgOuTi01vHo_79e1HMRnYZwG920)
+![](https://github.com/zywudev/blog-source/blob/master/image/FmgOuTi01vHo_79e1HMRnYZwG920.png)
 
 **1**、当 UI 主线程收到触摸 input 事件，经过一系列处理，最终会走到 DecorView 的 dispatchTouchEvent 方法。
 

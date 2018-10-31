@@ -16,11 +16,11 @@ jcenter 是属于 bintray 的一个仓库，所以需要注册账户。注意默
 
 点击下图中的 `Add New Repository` 。
 
-![](http://om9o63aks.bkt.clouddn.com/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93.png)
 
 出现下图的界面，**注意其中的 Name 和 Type 都要写成 maven**。
 
-![](http://om9o63aks.bkt.clouddn.com/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%932.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%932.png)
 
 ### 3、引入 bintray-release
 
@@ -86,18 +86,18 @@ gradlew clean build bintrayUpload -PbintrayUser=username -PbintrayKey=xxxxxxxxxx
 
 其中 PbintrayUser 为用户名，PbintrayKey 是个人的 API Key，可在 bintray 网站上点击 Edit Profile，即可看到。
 
-![](http://om9o63aks.bkt.clouddn.com/APP_KEY.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/APP_KEY.png)
 
 上传成功后，访问 `https://bintray.com/用户名/maven`，即可看到上传的项目。
 
-![](http://om9o63aks.bkt.clouddn.com/Logger.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Logger.png)
 
 注意此时还不能直接引用，因为项目还未添加到 Jcenter 仓库中。在下图的红色区域，未手动添加到 Jcenter 的会出现 `Add to Jcenter` 按钮，点击 `Add to Jcenter` 加入 `commit` 信息就行了，一般需要等待审核通过，几个小时吧，添加成功后`Add to Jcenter`那个按钮就消失了，如下图。
 
-![](http://om9o63aks.bkt.clouddn.com/Add_to_Jcenter.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Add_to_Jcenter.png)
 
 同样，可以在 jcenter 仓库中可以看到自己的项目了。
 
-![](http://om9o63aks.bkt.clouddn.com/jcenter.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jcenter.png)
 
 至此，整个流程就结束了，是不是很简单。

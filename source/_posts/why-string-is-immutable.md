@@ -23,7 +23,7 @@ String s1 = "abc";
 String s2 = "abc";
 ```
 
-![](http://om9o63aks.bkt.clouddn.com/FhDNgVxqIlP73m67Cej0-vPDIPkP)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/string.png)
 
 所以，如果字符串是可变的，那么常量池就没有存在的意义了。
 

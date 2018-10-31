@@ -138,8 +138,6 @@ public class Singleton {
 
 [<设计模式的艺术之道>  刘伟](https://www.amazon.cn/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%89%BA%E6%9C%AF-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC%E4%B9%8B%E9%81%93-%E5%88%98%E4%BC%9F/dp/B00ATKMX9M/ref=sr_1_4?ie=UTF8&qid=1357551589&sr=8-4)
 
-（完）
-
 
 
 

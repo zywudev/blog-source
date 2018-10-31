@@ -9,7 +9,7 @@ date: 2017-06-15 19:38:00
 
 模式结构图如下：
 
-![](http://om9o63aks.bkt.clouddn.com/factory-method-pattern.jpg)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/factory-method-pattern.jpg)
 
 共包含以下 4 个角色：
 

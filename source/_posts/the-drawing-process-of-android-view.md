@@ -1,16 +1,14 @@
 ---
-title: android-custom-view-theory
+title: Android View 的绘制过程
 date: 2018-10-16 16:54:55
 tags:
 ---
-
-[TOC]
 
 ## View 整体结构
 
 Activity、Window、DecorView 之间的关系：
 
-![](http://om9o63aks.bkt.clouddn.com/FpSbmDRlbt0JOcD67LsvOcksy2wo)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FsefzvUt3y5K6D1f262mDFGNwRsp.png)
 
 **Activity**: 类似控制器，统筹视图的添加与显示，以及通过回调来与 Window、View 进行交互。
 
@@ -30,7 +28,7 @@ NavigationBar是虚拟按键。
 
 ## View 的工作流程
 
-![](http://om9o63aks.bkt.clouddn.com/FqCavPSIW1o4cXHWIfTnlKItzYVh)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FuMzXGfmOHg5VKedzv8MvIlE9JpA.png)
 
 View 的绘制是从上往下一层层迭代，DecorView –> ViewGroup（—>ViewGroup）–> View ，依次 measure、layout 、draw。
 
@@ -97,13 +95,17 @@ DecorView 继承自 FrameLayout，所以会走到 FrameLayout 的 onMeasure() �
 
 根据父 View 的 MeasureSpec 和自身的 LayoutParams 参数进行测量。
 
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Fo1gJQWDZccIp1nk-b72HlBkAfLd.png)
+
 **细节：**
 
 **父 View 的测量方法**：
 
 根据子 View 的布局样式，调用 setMeasuredDimension 来设置自己的宽高。
 
-**子 View 的测量方法**：根据父 View 的 MeasureSpec 和 自身的 LayoutParams 参数进行测量。
+**子 View 的测量方法**：
+
+根据父 View 的 MeasureSpec 和 自身的 LayoutParams 参数进行测量。
 
 先计算子 View 的MeasureSpec，即 childMeasureSpec；
 
@@ -127,7 +129,7 @@ childMeasureSpec 的计算：
 
 由 parentMeasureSpec 和 childDimension 确定。childDimension 为 LayoutParams 的 width 和 height。
 
-规律：
+**规律**：
 
 - 当子 View 采用具体数值
   - mode: EXACTLY
@@ -143,7 +145,9 @@ childMeasureSpec 的计算：
 
 计算视图的位置，也就是 left、top、right、bottom。这些坐标都是相对于父布局的坐标。
 
-布局也是自上而下，不同的是 ViewGroup 先在 layout() 中确定自己的布局，然后在 onLayout() 方法中再调用子View的layout()方法，让子View布局。
+布局也是自上而下，不同的是 ViewGroup 先在 layout() 中确定自己的布局，然后在 onLayout() 方法中再调用子View 的 layout() 方法，让子 View 布局。
+
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FuyoJtSyZy8NbilQKC6f4aU_VdPz.png)
 
 ### draw
 
@@ -154,11 +158,13 @@ draw 主要流程：
 - 绘制Children(dispatchDraw)
 - 绘制装饰（onDrawScrollBars）
 
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FuMME_uu0Sb6lbxjXmPherQOYs_k.png)
 
+## 参考文档
 
+- [Window、Activity、DecorView以及ViewRoot之间的关系](https://love2.io/@funkkiid/doc/android_interview//android/basis/decorview.md)  
 
-
-
+- [View测量、布局及绘制原理](https://love2.io/@funkkiid/doc/android_interview//android/basis/custom_view.md)
 
 
 

@@ -4,7 +4,7 @@ date: 2018-06-01 21:03:49
 tags:
 ---
 
-![](http://om9o63aks.bkt.clouddn.com/Java%E5%BC%82%E5%B8%B8.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Java%E5%BC%82%E5%B8%B8.png)
 
 1、Exception 和 Error 都是继承自 Throwable 类。
 

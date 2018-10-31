@@ -6,7 +6,7 @@ tags:
 
 了解了些保险知识，整理了部分导图笔记。
 
-![](http://om9o63aks.bkt.clouddn.com/%E4%BF%9D%E9%99%A9.svg)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/%E4%BF%9D%E9%99%A9.svg)
 
 
 

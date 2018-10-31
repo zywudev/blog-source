@@ -20,13 +20,13 @@ tags:
 
 把三股动力结合在起来，就是一个简单有效的宏观经济分析模型。
 
-![](http://om9o63aks.bkt.clouddn.com/FmsF7BD4DD5hfgImvkQaYzlTtkKS)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FmsF7BD4DD5hfgImvkQaYzlTtkKS.png)
 
 ## 交易
 
 交易时刻在发生，你每次买东西都是进行一笔交易。
 
-![](http://om9o63aks.bkt.clouddn.com/FvQCv3JVuz57rmUjxd4DU8uug5mW)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FvQCv3JVuz57rmUjxd4DU8uug5mW.png)
 
 在一次交易中，买方可以使用「货币、信用」向卖方交换「商品、服务、金融资产」。
 
@@ -36,13 +36,13 @@ tags:
 
 在经济体中，有四种交易主体：个人、企业、银行和政府。
 
-![](http://om9o63aks.bkt.clouddn.com/Figg9cHSAtL2ZTtrlXyYVhKa0hJZ)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Figg9cHSAtL2ZTtrlXyYVhKa0hJZ.png)
 
 其中政府是最大的买方和卖方。政府包括中央政府和中央银行。
 
 中央银行控制经济中的货币和信贷数量，主要通过利率和发行货币来控制。
 
-![](http://om9o63aks.bkt.clouddn.com/FqMATSIoqtRTL1X0jvnrzxd_jHWi)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FqMATSIoqtRTL1X0jvnrzxd_jHWi.png)
 
 ## 信贷
 
@@ -50,7 +50,7 @@ tags:
 
 一旦使用信用，则会同时产生「信贷」和「债务」，债务是贷款人的资产，是借款人的负债，借款人一旦获得信贷，便可以增加自己的支出，而一个人的支出是另一个人的收入，这就导致借贷在不断增加循环。这一驱动模式导致经济增长，也就形成了长短债务周期。
 
-![](http://om9o63aks.bkt.clouddn.com/FtkkrVSfFYVyvoD4hqoc7XM0xTuM)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FtkkrVSfFYVyvoD4hqoc7XM0xTuM.png)
 
 ## 经济周期
 
@@ -60,7 +60,7 @@ tags:
 
 因为债务本质上是向未来的自己借钱，提前消费。你给自己设定了一个未来的时间，到那个时候你的支出必须少于收入，以便偿还债务，这样马上就产生了一个短期债务周期。
 
-![](http://om9o63aks.bkt.clouddn.com/FkMlo3sJu1Bz9fANcC5qeU1-v0gq)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FkMlo3sJu1Bz9fANcC5qeU1-v0gq.png)
 
 ### 短期债务周期
 
@@ -82,7 +82,7 @@ tags:
 
 ## 去杠杆化
 
-![](http://om9o63aks.bkt.clouddn.com/Fg_v2zuiqmX2iPjWBdD1d-Oo1ixJ)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Fg_v2zuiqmX2iPjWBdD1d-Oo1ixJ.png)
 
 主要通过四种办法：
 

@@ -14,16 +14,16 @@ Assert 就是断言，判断假设与实际是否一致，一致则测试通过�
 
 常用断言：
 
-- assertTrue  假设为真
-- assertFalse 假设为假
-- assertEquals 假设相同（基本数据类型或者对象）
-- assertNotEquals 假设不相同（基本数据类型或者对象）
-- assertNull 假设为空
-- assertNotNull 假设不为空
-- assertSame 假设相同（只能是对象）
-- assertNotSame 假设不相同（只能是对象）
-- assertArrayEquals 假设数组相同
-- assertThat 断言实际值是否满足指定的条件
+- assertTrue                                  假设为真
+- assertFalse                                 假设为假
+- assertEquals                              假设相同（基本数据类型或者对象）
+- assertNotEquals                       假设不相同（基本数据类型或者对象）
+- assertNull                                  假设为空
+- assertNotNull                           假设不为空
+- assertSame                               假设相同（只能是对象）
+- assertNotSame                        假设不相同（只能是对象）
+- assertArrayEquals                   假设数组相同
+- assertThat                                断言实际值是否满足指定的条件
 
 期望值是前一个参数，实际值是后一个参数。
 
@@ -41,8 +41,8 @@ assertThat(String reason, T actual, Matcher<? super T> matcher);
 
 - is	断言参数等于后面给出的匹配表达式	
 - not	断言参数不等于后面给出的匹配表达式	
-- equalTo	断言参数相等	
-- equalToIgnoringCase	断言字符串相等忽略大小写
+-  equalTo	断言参数相等	
+-  equalToIgnoringCase	断言字符串相等忽略大小写
 - containsString	断言字符串包含某字符串	
 - startsWith	断言字符串以某字符串开始
 - endsWith	断言字符串以某字符串结束
@@ -103,7 +103,7 @@ http://www.vogella.com/tutorials/Hamcrest/article.html
 
 - @Test	表示此方法为测试方法
 - @Before	在每个测试方法前执行，可做初始化操作
-- @After	在每个测试方法后执行，可做释放资源操作
+-  @After	在每个测试方法后执行，可做释放资源操作
 - @Ignore	忽略的测试方法
 - @BeforeClass	在类中所有方法前运行。此注解修饰的方法必须是static void
 - @AfterClass	在类中最后运行。此注解修饰的方法必须是static void

@@ -1,6 +1,7 @@
 ---
 title: GitHub Pages + Hexo 搭建博客
 date: 2017-03-04 17:53:39
+toc: true
 ---
 第一篇博客，记录一下博客搭建过程。
 
@@ -44,7 +45,7 @@ hexo s # 或 hexo server
 
 此时在浏览器地址栏中键入 [http://localhost:4000/](http://localhost:4000/) ， 可以看到内置的页面。
 
-![image](http://om9o63aks.bkt.clouddn.com/hexo-init-page.png)
+![image](https://raw.githubusercontent.com/zywudev/blog-source/master/image/hexo-init-page.png)
 ## GitHub Pages 设置
 注册 GitHub 及其使用可以参考 [从 0 开始学习 GITHUB 系列汇总](http://stormzhang.com/github/2016/06/19/learn-github-from-zero-summary/)。
 
@@ -150,7 +151,7 @@ url: http://zywudev.github.io
 
 提交 sitemap 到 [Google站长工具](https://www.google.com/webmasters/tools/home?hl=zh-CN)，找到添加站点地图按钮，添加 `sitemap.xml` 即可，如下图。
 
-![](http://om9o63aks.bkt.clouddn.com/google-sitemap.jpg)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/google-sitemap.png)
 
 
 ## 博客优化

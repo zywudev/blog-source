@@ -10,7 +10,7 @@ Android APK 本质上是一个压缩包，打开后会发现就是各种资源�
 
 Android 官网给出的构建流程图：
 
-![](http://om9o63aks.bkt.clouddn.com/android_build.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/android_build.png)
 
 **从图中可以总结为 7 个步骤**：
 
@@ -30,7 +30,7 @@ Android 官网给出的构建流程图：
 
 更详细的流程图可以看下图：
 
-![](http://om9o63aks.bkt.clouddn.com/android_build_detail.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/android_build_detail.png)
 
 **参考**
 

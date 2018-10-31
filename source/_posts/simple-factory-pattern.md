@@ -9,7 +9,7 @@ date: 2017-04-26 10:46:26
 
 模型结构图如下：
 
-![](http://om9o63aks.bkt.clouddn.com/simple_factory_pattern.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/simple_factory_pattern.png)
 
 其中包含以下几个角色：
 
@@ -72,7 +72,7 @@ public class Client {
 
 有时，为了简化工厂模式，可以将抽象产品类和工厂类合并，将静态工厂方法移至抽象产品类。
 
-![](http://om9o63aks.bkt.clouddn.com/simple-factory-pattern-2.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/simple-factory-pattern-2.png)
 
 **其主要缺点在于**：
 
@@ -82,5 +82,3 @@ public class Client {
 适用场景：
 
 - 产品对象较少，工厂方法的逻辑不会太复杂。
-
-（完）
