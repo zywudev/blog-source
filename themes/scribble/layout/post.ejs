@@ -1,0 +1,42 @@
+
+<html>
+  <head>
+
+    <title><%= page.title %> - <%= theme.title %></title>
+    <%- partial('_partial/head') %>
+  </head>
+  <body>
+  	 <!-- <%- partial('_partial/header') %> -->
+
+    <div id='container'>
+      <%- partial('_partial/links') %>
+
+      <div class='content'>
+        <section class='post'>
+          <h1>
+		    <%= page.title %>
+            <!--<div class='date'> <%- date(page.date, config.date_format) %></div> -->
+          </h1>
+          <%- page.content %>
+        </section>
+      </div>
+
+      <hr>
+      <p align="center">contact me</p>
+
+
+<div align="center"><img src='/images/qrcode.jpg'></div>
+
+      <% if (theme.disqus_shortname) { %>
+        <%- partial('_partial/disqus') %>
+      <% } %>
+  	
+
+      
+
+
+
+
+    <%- partial('_partial/footer') %>
+  </body>
+</html>
