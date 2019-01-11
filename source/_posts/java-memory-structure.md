@@ -4,6 +4,8 @@ date: 2019-01-10 14:59:11
 tags:
 ---
 
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/java_memory_structure.png)
+
 ## 1、程序计数器
 
 Java 虚拟机的多线程是通过线程轮流切换并分配处理器执行时间的方式实现，所以确定的时刻一个处理器只会执行一个线程中的指令。
@@ -16,10 +18,10 @@ Java 虚拟机的多线程是通过线程轮流切换并分配处理器执行时
 
 局部变量表的所需的内存空间在编译期间完成分配，运行时不会改变大小。
 
-虚拟机栈定义了两种异常状况：**StackOverFlowError** 和 **OutOfMemoryError**。
+虚拟机栈定义了两种异常状况：StackOverFlowError  和  OutOfMemoryError 。
 
-- **StackOverFlowError**：线程请求的栈深度大于虚拟机所允许的深度。
-- **OutOfMemoryError**：大多数虚拟机都允许动态扩展虚拟机栈的大小，所以线程可以一直申请栈，直到内存不足时，抛出 OutOfMemoryError。
+- StackOverFlowError：线程请求的栈深度大于虚拟机所允许的深度。
+-  OutOfMemoryError ：大多数虚拟机都允许动态扩展虚拟机栈的大小，所以线程可以一直申请栈，直到内存不足时，抛出 OutOfMemoryError。
 
 ## 3、本地方法栈
 
