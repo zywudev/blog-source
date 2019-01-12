@@ -44,7 +44,7 @@ class GCObject {
 
 堆栈内存模型如下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_reference_counter.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_judge_object_recycle_1.png)
 
 main 方法中执行的 6 个步骤对应的引用计数结果：
 
@@ -56,11 +56,11 @@ main 方法中执行的 6 个步骤对应的引用计数结果：
 
 4、实例A引用计数加 1，引用计数 = 2；
 
-5、objA 引用不再指向实例A，实例A 的引用计数减为 1；
+5、objA 引用不再指向实例 A，实例 A 的引用计数减为 1；
 
-6、objB 引用计数不再指向实例B，实例B的引用计数减为 1。
+6、objB 引用计数不再指向实例 B，实例B的引用计数减为 1。
 
-到此，GCObject 的实例A 和 实例 B 的引用计数都不为 0， 此时如果执行垃圾回收，实例A和实例B是不会被回收的，也就出现内存泄漏了。
+到此，GCObject 的实例 A 和 实例 B 的引用计数都不为 0， 此时如果执行垃圾回收，实例 A 和实例 B 是不会被回收的，也就出现内存泄漏了。
 
 ## 可达性分析算法
 
@@ -76,5 +76,7 @@ Java 中采用的是可达性分析算法判断对象是否可以被回收的。
 - 方法区的静态变量和常量引用的对象
 - 本地方法栈中 JNI 引用的对象
 
-在上面的例子中，当执行第 4、5 步后，虽然实例A 和实例B相互引用，但是它们到 GC Roots 都是不可达的，所以它们都会被判定成可回收对象
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_judge_object_recycle_2.png)
+
+在上面的例子中，当执行第 4、5 步后，虽然实例A 和实例B相互引用，但是它们到 GC Roots 都是不可达的，所以它们都会被判定成可回收对象。
 
