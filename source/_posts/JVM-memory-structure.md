@@ -1,5 +1,5 @@
 ---
-title: Java 内存结构
+title: JVM 内存结构
 date: 2019-01-10 14:59:11
 tags:
 ---
