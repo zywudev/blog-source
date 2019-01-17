@@ -16,9 +16,9 @@ social:
 # Components will appear in the order they are specified
 sidebars:
   tag: true
+  wechat: true
   recommendation: true
   recent: true # boolean to display 10 most recent posts
-  wechat: true
   featured: false # boolean to list all posts with tag 'featured'
   
   github: false # string to point to a Github profile | false to disable

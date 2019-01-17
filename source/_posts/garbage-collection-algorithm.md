@@ -1,5 +1,5 @@
 ---
-title: 垃圾收集的算法有哪些？
+title: 垃圾收集算法有哪些？
 date: 2019-01-15 14:13:32
 tags:
 ---
@@ -8,7 +8,9 @@ tags:
 
 首先进行标记工作，标识出所有要回收的对象，然后进行统一回收被标记的对象。
 
-对象标记的过程在 [Java 对象的自我救赎](http://wuzhangyang.com/2019/01/14/java-object-self-redemption/) 一文中有介绍。
+对象标记的过程在 [Java 对象的自我救赎](http://wuzhangyang.com/2019/01/14/java-object-self-redemption/) 一文中有介绍。执行过程如下图：
+
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/mark_sweep.png)
 
 **它的不足之处在于**：
 
@@ -22,7 +24,9 @@ tags:
 
 当这一块内存用完了，就将还存活的对象复制到另外一块上面，再把已使用过的内存空间一次清理掉。
 
-**商用虚拟机都采用这种算法回收新生代的对象**。因为新生代的对象每次回收都基本上只有 10% 左右的对象存活，需要复制的对象少，效率高。
+**商用虚拟机都采用这种算法回收新生代的对象**。因为新生代的对象每次回收都基本上只有 10% 左右的对象存活，需要复制的对象少，效率高。执行过程如下图：
+
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/copying.png)
 
 **优点：**
 
@@ -36,13 +40,15 @@ tags:
 
 ## 标记整理（Mark-Compact）算法
 
-与标记清除算法类似，但不是在标记完成后对可回收对象进行清理，而是将所有存活的对象向一端移动，然后直接清理掉端边界以外的内存。
+与标记清除算法类似，但不是在标记完成后对可回收对象进行清理，而是将所有存活的对象向一端移动，然后直接清理掉端边界以外的内存。执行过程如下图：
 
-优点：
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/mark_compact.png)
+
+**优点：**
 
 消除了标记清除导致的内存分散问题，也消除了复制算法中内存减半的高额代价。
 
-缺点：
+**不足之处：**
 
 效率低下，需要标记所有存活对象，还要标记所有存活对象的引用地址。效率上低于复制算法。
 
