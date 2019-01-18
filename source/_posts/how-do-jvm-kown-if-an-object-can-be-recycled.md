@@ -1,5 +1,5 @@
 ---
-title: JVM 中如何判断对象可以被回收
+title: JVM 中如何判断对象可以被回收?
 date: 2019-01-12 20:34:01
 tags:
 ---
@@ -79,4 +79,8 @@ Java 中采用的是可达性分析算法判断对象是否可以被回收的。
 ![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_judge_object_recycle_2.png)
 
 在上面的例子中，当执行第 5、6 步后，虽然实例 A 和实例 B 相互引用，但是它们到 GC Roots 都是不可达的，所以它们都会被判定成可回收对象。
+
+## 参考资料
+
+[深入理解Java虚拟机:JVM高级特性与最佳实践(第2版)](https://book.douban.com/subject/24722612/)
 

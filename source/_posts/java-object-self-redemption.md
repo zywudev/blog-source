@@ -56,3 +56,8 @@ public class FinalizeEscapeGC {
  `finalize()` 方法的执行线程 Finalizer 优先级级别低，无法保证  `finalize()` 方法什么时候执行，执行是否符合预期，使用不当会影响性能。
 
 Java 9 中已经将  `finalize()` 方法标记为废弃了，如果没有特别的原因，不要重写  `finalize()` 方法，也别指望它能回收资源。相反，尽量使用 `try-finally` 、 `try-with-resources` 等机制是非常好的资源回收方法。
+
+## 参考资料
+
+[深入理解Java虚拟机:JVM高级特性与最佳实践(第2版)](https://book.douban.com/subject/24722612/)
+
