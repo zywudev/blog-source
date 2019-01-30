@@ -40,19 +40,17 @@ start、end 就是每个 TLAB 的起始结束指针，top 则表示已经分配�
 
 Java 应用不断创建对象，优先分配在 Eden 区域，当空间占用达到一定阈值时，触发 Minor GC。没有被引用的对象被回收，仍然存活的对象被复制到 JVM 选择的 Survivor 区域。如下图，数字 1 表示对象的存活年龄计数。
 
-
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_minor_gc_1.png)
 
 在下一次 Minor GC 时，另外一个 Survivor 区域会成为 to 区域， Eden 区域存活的对象和 from 区域对象都会被复制到 to 区域，存活的年龄计会被加 1。
 
-
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_minor_gc_2.png)
 
 上述过程会发生很多次，直到有对象年龄计数达到阈值，这些对象会被晋升到老年代。
 
-
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_minor_gc_3.png)
 
 老年代的 GC 叫着 Major GC，对整个堆进行的清理叫着 Full GC。
-
-
 
 
 
