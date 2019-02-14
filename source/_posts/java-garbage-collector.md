@@ -1,7 +1,9 @@
 ---
 title: JVM 七种垃圾收集器
 date: 2019-01-17 20:43:05
-tags: JVM
+tags: 
+- JVM
+- GC
 ---
 
 Java 垃圾收集器是 [垃圾收集算法](http://wuzhangyang.com/2019/01/15/garbage-collection-algorithm/) 的具体实现。

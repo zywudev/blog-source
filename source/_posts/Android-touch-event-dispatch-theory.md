@@ -6,22 +6,9 @@ tags:
 
 ## 事件分发流程图
 
-![](https://github.com/zywudev/blog-source/blob/master/image/FmgOuTi01vHo_79e1HMRnYZwG920.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FmgOuTi01vHo_79e1HMRnYZwG920.png)
 
-**1**、当 UI 主线程收到触摸 input 事件，经过一系列处理，最终会走到 DecorView 的 dispatchTouchEvent 方法。
-
-```java
-@Override
-public boolean dispatchTouchEvent(MotionEvent ev) {
-    final Window.Callback cb = mWindow.getCallback();
-    return cb != null && !mWindow.isDestroyed() && mFeatureId < 0
-        ? cb.dispatchTouchEvent(ev) : super.dispatchTouchEvent(ev);
-}
-```
-
-Activity 实现了 Window.Callback 接口，所以接下来会调用 Activity 的 dispatchTouchEvent，所以可以将 Activity 作为原始的事件分发者。
-
-**2**、事件分发、拦截与消费
+## 事件分发、拦截与消费
 
 | 类型     | 相关方法              | Activity | ViewGroup | View |
 | -------- | --------------------- | -------- | --------- | ---- |
@@ -49,7 +36,7 @@ Activity －> PhoneWindow －> DecorView －> ViewGroup －> ... －> View
 Activity <－ PhoneWindow <－ DecorView <－ ViewGroup <－ ... <－ View
 ```
 
-**4**、onInterceptTouchEvent 返回 true 表示事件拦截，onTouchEvent 返回 true 表示事件消费，
+**4**、onInterceptTouchEvent 返回 true 表示事件拦截，onTouchEvent 返回 true 表示事件消费。
 
 **5**、事件在从 Activity.dispatchTouchEvent 往下分发的过程中。
 
@@ -58,6 +45,97 @@ Activity <－ PhoneWindow <－ DecorView <－ ViewGroup <－ ... <－ View
 如果中间任何一层 ViewGroup 拦截事件，则事件不再往下分发，交由拦截的 ViewGroup 的 onTouchEvent 来处理。
 
 **6**、如果 View 没有消费 ACTION_DOWN 事件，则之后的 ACTION_MOVE 等事件都不会再接收。
+
+## 2 源码
+
+事件是从 Activity 开始分发，Activity 的 dispatchTouchEvent 是如何接受到触摸事件，还有一系列的前期工作，后面会单独写一篇文章描述。
+
+### 2.1 Activity.dispatchTouchEvent
+
+```java
+public boolean dispatchTouchEvent(MotionEvent ev) {
+    if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+        // 第一次按下时，用户希望与设备进行交互时，可以重写该方法实现
+        onUserInteraction();
+    }
+    // 获取 PhoneWindow, 传递事件 [见 2.2]
+    if (getWindow().superDispatchTouchEvent(ev)) {
+        return true;
+    }
+    // 没有任何 view 处理事件时，交给 Activity 的 onTouchEvent 处理
+    return onTouchEvent(ev);
+}
+```
+
+其中 getWindow() 返回的是 Activity 的 mWindow 成员变量，而 Window 类是一个抽象类，唯一实现类是 PhoneWindow，所以该方法获取到的是 PhoneWindow 对象。
+
+#### 2.1.1 Activity.onTouchEvent
+
+```java
+ public boolean onTouchEvent(MotionEvent event) {
+     // 当窗口需要关闭时，消费掉当前事件
+     if (mWindow.shouldCloseOnTouch(this, event)) {
+         finish();
+         return true;
+     }
+
+     return false;
+ }
+```
+
+### 2.2 superDispatchTouchEvent
+
+```java
+public boolean superDispatchTouchEvent(MotionEvent event) {
+    return mDecor.superDispatchTouchEvent(event); 
+}
+```
+
+PhoneWindow 中直接将事件交给了 DecorView 处理，DecorView 的 superDispatchTouchEvent 方法如下。
+
+```java
+ public boolean superDispatchTouchEvent(MotionEvent event) {
+     return super.dispatchTouchEvent(event);
+ }
+```
+
+可以看到，DecorView 调用的是父类的 dispatchTouchEvent 方法，而 DecorView 的父类是 ViewGroup，所以接着会调用 ViewGroup.dispatchTouchEvent。
+
+### 2.3 ViewGroup.dispatchTouchEvent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 参考
 

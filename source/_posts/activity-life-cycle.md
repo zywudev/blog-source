@@ -1,6 +1,7 @@
 ---
 title: Android Activity 生命周期
 date: 2017-03-21 20:49:23
+tag: Android
 ---
 本文目的在于详细总结 Activity 的生命周期。
 
