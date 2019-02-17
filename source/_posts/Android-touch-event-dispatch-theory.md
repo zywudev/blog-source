@@ -9,19 +9,17 @@ tags: Android
 根据面向对象思想，事件被封装成 MotionEvent 对象，以下是几个与手指触摸相关的常见事件:
 
 - ACTION_DOWN : 手指初次触摸到屏幕时触发。
-- ACTION_MOVE：手指在屏幕上滑动时触发，会多出触发。
+- ACTION_MOVE：手指在屏幕上滑动时触发，会触发多次。
 - ACTION_UP：手指离开屏幕时触发。
 - ACTION_CANCEL：事件被上层拦截时触发。
 
 对于单指操作，一次触摸事件流程是这样的：
 
-> 按下（ACTION_DOWN）--> 滑动（ACTION_MOVE）--> 离开（ACTION_UP)
-
-如果只是简单的点击，则没有 ACTION_MOVE 事件产生。
+按下（ACTION_DOWN）--> 滑动（ACTION_MOVE）--> 离开（ACTION_UP)。如果只是简单的点击，则没有 ACTION_MOVE 事件产生。
 
 ## 事件分发、拦截与消费
 
-与事件相关的三个重要方法：
+与事件分发相关的三个重要方法：
 
 - dispatchTouchEvent：事件分发机制中的核心，所有的事件调度都归它管。
 - onInterceptTouchEvent：事件拦截。
@@ -29,13 +27,13 @@ tags: Android
 
 ## 事件分发流程
 
-**事件分发流程示意图**：
+事件分发流程示意图：
 
 ![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FmgOuTi01vHo_79e1HMRnYZwG920.png)
 
-> 图中 ViewGroup 与 View 之间省略了若干层 ViewGroup。
-
 大致解释一下：
+
+- 图中 ViewGroup 与 View 之间省略了若干层 ViewGroup。
 
 - 触摸事件都是先交由 Activity 的 `dispatchTouchEvent` 方法（在此之间还有一系列的操作，在此省略了），再一层层往下分发。当中间的 ViewGroup 不进行拦截时，事件会分发给最底层的 View，由 View 的 `onTouchEvent` 方法进行处理，如果事件一直未被处理，最后会返回到 Activity 的 `onTouchEvent`。
 - 图中 View/ViewGroup 的 `onTouchEvent` 返回 false，并不是直接调用上层的 `onTouchEvent` 方法。而是上层的 `dispatchTouchEvent` 方法接收到下层的 false 返回值时，再将事件分发给自己的 `onTouchEvent` 处理。
@@ -44,7 +42,7 @@ tags: Android
 
 ## 源码分析
 
-事件是从 Activity 开始分发，Activity 的 `dispatchTouchEvent` 是如何接受到触摸事件，还有一系列的前期工作，后面会单独写一篇文章描述。
+事件是从 Activity 开始分发，Activity 的 `dispatchTouchEvent` 是如何接受到触摸事件，还有一系列的前期工作，后面会单独写一篇文章总结。
 
 ### Activity 对事件的分发流程
 
@@ -75,7 +73,7 @@ public boolean superDispatchTouchEvent(MotionEvent event) {
 }
 ```
 
-PhoneWindow 中直接将事件交给了 DecorView 处理，DecorView 的 `superDispatchTouchEvent` 方法如下。
+可以看到，PhoneWindow 中直接将事件交给了 DecorView 处理，DecorView 的 `superDispatchTouchEvent` 方法如下。
 
 ```java
  public boolean superDispatchTouchEvent(MotionEvent event) {
@@ -83,11 +81,11 @@ PhoneWindow 中直接将事件交给了 DecorView 处理，DecorView 的 `superD
  }
 ```
 
-可以看到，DecorView 调用的是父类的 `dispatchTouchEvent` 方法，而 DecorView 的父类是 ViewGroup，所以接着会调用 `ViewGroup.dispatchTouchEvent`。
+DecorView 调用的是父类的 `dispatchTouchEvent` 方法，而 DecorView 的父类是 ViewGroup，所以接着会调用 `ViewGroup.dispatchTouchEvent`。
 
 #### Activity.onTouchEvent
 
-如果没有任何 view 处理事件，最后会交给 Activity 的 `onTouchEvent` 处理。
+如果没有任何 View 处理事件，最后会交给 Activity 的 `onTouchEvent` 处理。
 
 ```java
  public boolean onTouchEvent(MotionEvent event) {
@@ -96,7 +94,6 @@ PhoneWindow 中直接将事件交给了 DecorView 处理，DecorView 的 `superD
          finish();
          return true;
      }
-
      return false;
  }
 ```
@@ -105,7 +102,9 @@ PhoneWindow 中直接将事件交给了 DecorView 处理，DecorView 的 `superD
 
 #### ViewGroup.dispatchTouchEvent
 
-ViewGroup 的 `dispatchTouchEvent` 方法内容较多，这里先拆开来分析：
+ViewGroup 的 `dispatchTouchEvent` 方法内容较多，这里拆分为检测拦截、寻找子 View、分发事件。
+
+**1、 检测拦截**
 
 ```java
 // 检测拦截
@@ -114,7 +113,7 @@ if (actionMasked == MotionEvent.ACTION_DOWN
                     || mFirstTouchTarget != null) {
     // 可以通过调用 requestDisallowInterceptTouchEvent,不让父 View 拦截事件
     final boolean disallowIntercept = (mGroupFlags & FLAG_DISALLOW_INTERCEPT) != 0;
-    if (!disallowIntercept) {  // 是否允许调用拦截器
+    if (!disallowIntercept) {  // 允许父 View 拦截
         intercepted = onInterceptTouchEvent(ev);  
         ev.setAction(action);
     } else {
@@ -129,23 +128,23 @@ if (actionMasked == MotionEvent.ACTION_DOWN
 
 这一段代码的目的是检测 ViewGroup 是否拦截事件。
 
-mFirstTouchTarget 用来记录已经消费事件的子 View。
+mFirstTouchTarget 用来记录已经消费事件的子 View，目的是为了后续其他事件分发时直接将事件分发给 mFirstTouchTarget  指向的 View。
 
-FLAG_DISALLOW_INTERCEPT 这个标志位可以影响到 ViewGroup 是否拦截事件，可以通过调用 `requestDisallowInterceptTouchEvent` 方法来设置，一般用于子 View 当中，禁止父 View 拦截事件，处理滑动冲突。但要注意，**`requestDisallowInterceptTouchEvent` 方法对 ACTION_DOWN 事件是无效的**，为什么呢？因为 **ViewGroup 的 `dispatchTouchEvent` 方法每次接收到 ACTION_DOWN 事件时，都会初始化状态**。代码如下：
+`FLAG_DISALLOW_INTERCEPT` 这个标志位可以影响到 ViewGroup 是否拦截事件，可以通过调用 `requestDisallowInterceptTouchEvent` 方法来设置，一般用于子 View 当中，禁止父 View 拦截事件，处理滑动冲突。但要注意，**`requestDisallowInterceptTouchEvent` 方法对 ACTION_DOWN 事件是无效的**，为什么呢？因为 **ViewGroup 的 `dispatchTouchEvent` 方法每次接收到 ACTION_DOWN 事件时，都会初始化状态**。代码如下：
 
 ```java
 // 处理一个初始按下事件 ACTION_DOWN
 if (actionMasked == MotionEvent.ACTION_DOWN) {
     // 发生 Action_DOWN 事件，取消清除之前所有的触摸目标
     cancelAndClearTouchTargets(ev);
-    // 重置触摸状态，清除 FLAG_DISALLOW_INTERCEPT；设置 MFirstTouchTarget = null
+    // 重置触摸状态，清除 FLAG_DISALLOW_INTERCEPT；设置 mFirstTouchTarget = null
     resetTouchState();
 }
 ```
 
-从上面分析我们知道 `onInterceptTouchEvent` 方法不是每次都会执行的。
+**2、寻找子 View**
 
-如果 ViewGroup 没有拦截事件，事件会传递给它的子 View。
+如果 ViewGroup 没有拦截事件，事件没有被取消，并且是 ACTION_DOWN 事件时，首先会去寻找可以接收事件的子 View。代码如下：
 
 ```java
 // 不取消事件，同时不拦截事件, 并且是Down事件才进入该区域
@@ -230,16 +229,13 @@ if (!canceled && !intercepted) {
                     break;
                 }
 
-                // The accessibility focus didn't handle the event, so clear
-                // the flag and do a normal dispatch to all children.
                 ev.setTargetAccessibilityFocus(false);
             }
             if (preorderedList != null) preorderedList.clear();
         }
 
         if (newTouchTarget == null && mFirstTouchTarget != null) {
-            // Did not find a child to receive the event.
-            // Assign the pointer to the least recently added target.
+            // 将 mFirstTouchTarget 的链表最后的 TouchTarget 赋给 newToughTarget
             newTouchTarget = mFirstTouchTarget;
             while (newTouchTarget.next != null) {
                 newTouchTarget = newTouchTarget.next;
@@ -250,61 +246,271 @@ if (!canceled && !intercepted) {
 }
 ```
 
-当事件没有被取消，没有被拦截，并且是 ACTION_DOWN 事件时，才会进入上述代码区域，寻找子 View 进行事件分发。
+寻找子 View 进行分发事件的方法就是遍历子 View，有这样两个条件：
 
-从代码中可以看到，ViewGroup 从最底层开始遍历，找寻 newTouchTarget。如果已经存在找寻newTouchTarget，说明正在接收触摸事件，则跳出循环。
+```java
+// 1、子view可见，并且没有播放动画；2、触摸事件的坐标落在子view的范围内
+if (!canViewReceivePointerEvents(child)
+    || !isTransformedTouchPointInView(x, y, child, null)) {
+    ev.setTargetAccessibilityFocus(false);
+    continue;
+}
+```
 
+这两个条件如果同时满足，则将事件分发给子 View。
 
+接着会调用 `dispatchTransformedTouchEvent` 方法，可以猜到这个方法中肯定做了事件分发的操作。
 
+如果这个方法返回 true，表示子 View 消费了事件，则会在 `addTouchTarget` 方法中设置 mFirstTouchTarget ，后续事件（ACTION_MOVE、ACTION_UP）分发时会直接将事件分发给 mFirstTouchTarget 指向的 View。
 
+换句话说，如果子 View 没有消费 ACTION_DOWN 事件，mFirstTouchTarget 就会为 null，也就不会接收其他 ACTION_MOVE、ACTION_UP 等事件，如下代码：
 
+```java
+if (mFirstTouchTarget == null) {
+    // 没有触摸target,则由当前ViewGroup来处理（第三个参数child为null）
+    handled = dispatchTransformedTouchEvent(ev, canceled, null,
+                                            TouchTarget.ALL_POINTER_IDS);
+} else {
+    // 如果View消费ACTION_DOWN事件，那么ACTION_MOVE、ACTION_UP等事件相继开始执行
+    TouchTarget predecessor = null;
+    TouchTarget target = mFirstTouchTarget;
+    while (target != null) {
+        final TouchTarget next = target.next;
+        if (alreadyDispatchedToNewTouchTarget && target == newTouchTarget) {
+            handled = true;
+        } else {
+            final boolean cancelChild = resetCancelNextUpFlag(target.child)
+                || intercepted;
+            if (dispatchTransformedTouchEvent(ev, cancelChild,
+                                              target.child, target.pointerIdBits)) {
+                handled = true;
+            }
+            if (cancelChild) {
+                if (predecessor == null) {
+                    mFirstTouchTarget = next;
+                } else {
+                    predecessor.next = next;
+                }
+                target.recycle();
+                target = next;
+                continue;
+            }
+        }
+        predecessor = target;
+        target = next;
+    }
+}
+```
 
+**3、事件分发**
 
+`dispatchTransformedTouchEvent` 的伪代码如下：
 
+```java
+ if (child == null) {
+     handled = super.dispatchTouchEvent(event);  
+ } else {
+     handled = child.dispatchTouchEvent(event);
+ }
+```
 
+如果不存在子 View，ViewGroup 会调用父类 View 的 `dispatchTouchEvent` 方法，再调用 onTouchEvent 方法处理事件。
 
+如果存在子 View ,将事件分发给子 View 的 `dispatchTouchEvent`，子 View 如果是 ViewGroup，则会调用 `ViewGroup.dispatchTouchEvent`，进行拦截检测、寻找子 View、分发事件操作。
 
+### View 对事件的分发流程
 
+#### View.dispatchTouchEvent
 
+```java
+public boolean dispatchTouchEvent(MotionEvent event) {
+    ...
+    
+    final int actionMasked = event.getActionMasked();
+    if (actionMasked == MotionEvent.ACTION_DOWN) {
+        // 在ACION_DOWN事件之前，如果存在滚动操作则停止。不存在则不进行操作
+        stopNestedScroll();
+    }
 
+    if (onFilterTouchEventForSecurity(event)) {
+        // 当存在OnTouchListener，且视图状态为ENABLED时，调用onTouch方法
+        // mOnTouchListener.onTouch优先于onTouchEvent执行
+        ListenerInfo li = mListenerInfo;
+        if (li != null && li.mOnTouchListener != null
+                && (mViewFlags & ENABLED_MASK) == ENABLED
+                && li.mOnTouchListener.onTouch(this, event)) {
+            result = true; // 如果已经消费事件，则返回True
+        }
+        //如果OnTouch没有消费Touch事件则调用OnTouchEvent
+        if (!result && onTouchEvent(event)) { 
+            result = true; //如果已经消费事件，则返回True
+        }
+    }
 
+    if (!result && mInputEventConsistencyVerifier != null) {
+        mInputEventConsistencyVerifier.onUnhandledEvent(event, 0);
+    }
 
+    // 处理取消或抬起操作
+    if (actionMasked == MotionEvent.ACTION_UP ||
+            actionMasked == MotionEvent.ACTION_CANCEL ||
+            (actionMasked == MotionEvent.ACTION_DOWN && !result)) {
+        stopNestedScroll();
+    }
 
+    return result;
+}
+```
 
+如果存在 OnTouchListener，且视图状态为 ENABLED 时，调用`onTouch` 方法，`onTouch` 方法会优先处理事件。
 
+如果 `onTouch` 方法返回 true，表示已经消费了事件，也就不再执行 `onTouchEvent` 。否则， `onTouchEvent` 处理事件，返回 true，消费事件，否则不处理事件。
 
+#### View.onTouchEvent
 
+```java
+public boolean onTouchEvent(MotionEvent event) {
+    final float x = event.getX();
+    final float y = event.getY();
+    final int viewFlags = mViewFlags;
 
+    // 当View状态为DISABLED，如果可点击或可长按，则返回True，即消费事件
+    if ((viewFlags & ENABLED_MASK) == DISABLED) {
+        if (event.getAction() == MotionEvent.ACTION_UP && (mPrivateFlags & PFLAG_PRESSED) != 0) {
+            setPressed(false);
+        }
+        return (((viewFlags & CLICKABLE) == CLICKABLE ||
+                (viewFlags & LONG_CLICKABLE) == LONG_CLICKABLE));
+    }
 
+    if (mTouchDelegate != null) {
+        if (mTouchDelegate.onTouchEvent(event)) {
+            return true;
+        }
+    }
 
+    //当View状态为ENABLED，如果可点击或可长按，则返回True，即消费事件;
+    //与前面的的结合，可得出结论:只要view是可点击或可长按，则消费该事件.
+    if (((viewFlags & CLICKABLE) == CLICKABLE ||
+            (viewFlags & LONG_CLICKABLE) == LONG_CLICKABLE)) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_UP:
+                boolean prepressed = (mPrivateFlags & PFLAG_PREPRESSED) != 0;
+                if ((mPrivateFlags & PFLAG_PRESSED) != 0 || prepressed) {
+                    boolean focusTaken = false;
+                    if (isFocusable() && isFocusableInTouchMode() && !isFocused()) {
+                        focusTaken = requestFocus();
+                    }
 
+                    if (prepressed) {
+                        setPressed(true, x, y);
+                   }
 
+                    if (!mHasPerformedLongPress) {
+                        //这是Tap操作，移除长按回调方法
+                        removeLongPressCallback();
 
+                        if (!focusTaken) {
+                            if (mPerformClick == null) {
+                                mPerformClick = new PerformClick();
+                            }
+                            //调用View.OnClickListener
+                            if (!post(mPerformClick)) {
+                                performClick();
+                            }
+                        }
+                    }
 
+                    if (mUnsetPressedState == null) {
+                        mUnsetPressedState = new UnsetPressedState();
+                    }
 
+                    if (prepressed) {
+                        postDelayed(mUnsetPressedState,
+                                ViewConfiguration.getPressedStateDuration());
+                    } else if (!post(mUnsetPressedState)) {
+                        mUnsetPressedState.run();
+                    }
 
+                    removeTapCallback();
+                }
+                break;
 
+            case MotionEvent.ACTION_DOWN:
+                mHasPerformedLongPress = false;
 
+                if (performButtonActionOnTouchDown(event)) {
+                    break;
+                }
 
+                //获取是否处于可滚动的视图内
+                boolean isInScrollingContainer = isInScrollingContainer();
 
+                if (isInScrollingContainer) {
+                    mPrivateFlags |= PFLAG_PREPRESSED;
+                    if (mPendingCheckForTap == null) {
+                        mPendingCheckForTap = new CheckForTap();
+                    }
+                    mPendingCheckForTap.x = event.getX();
+                    mPendingCheckForTap.y = event.getY();
+                    //当处于可滚动视图内，则延迟TAP_TIMEOUT，再反馈按压状态
+                    // 用来判断用户是否想要滚动。默认延时为100ms
+                    postDelayed(mPendingCheckForTap, ViewConfiguration.getTapTimeout());
+                } else {
+                    //当不再滚动视图内，则立刻反馈按压状态
+                    setPressed(true, x, y);
+                    checkForLongClick(0); //检测是否是长按
+                }
+                break;
 
+            case MotionEvent.ACTION_CANCEL:
+                setPressed(false);
+                removeTapCallback();
+                removeLongPressCallback();
+                break;
 
+            case MotionEvent.ACTION_MOVE:
+                drawableHotspotChanged(x, y);
 
+                if (!pointInView(x, y, mTouchSlop)) {
+                    removeTapCallback();
+                    if ((mPrivateFlags & PFLAG_PRESSED) != 0) {
+                        removeLongPressCallback();
+                        setPressed(false);
+                    }
+                }
+                break;
+        }
 
+        return true;
+    }
+    return false;
+}
+```
 
+只要 view 是可点击或可长按，则消费该事件。
 
+长按事件是在 ACTION_DOWN 事件中检测，单击事件需要两个事件 ACTION_DOWN、ACTION_UP 才能触发。
 
-4**、onInterceptTouchEvent 返回 true 表示事件拦截，onTouchEvent 返回 true 表示事件消费。
+与 View 相关的各个方法调用顺序应该是这样的：
 
-**5**、事件在从 Activity.dispatchTouchEvent 往下分发的过程中。
+onTouchListener > onTouchEvent > onLongClickListener > onClickListener
 
-如果中间的 ViewGroup 都不拦截，进入最底层的 View 后，由View.onTouchEvent 处理，如果 View 也没有消费事件，最后会返回到 Activity.onTouchEvent。
+## 总结
 
-如果中间任何一层 ViewGroup 拦截事件，则事件不再往下分发，交由拦截的 ViewGroup 的 onTouchEvent 来处理。
+结合源码和事件分发示意图，对事件分发机制总结一下：
 
-**6**、如果 View 没有消费 ACTION_DOWN 事件，则之后的 ACTION_MOVE 等事件都不会再接收。
+1、事件在从 Activity 的 `dispatchTouchEvent` 往下分发，如果没有 View 消费事件，事件最后会回到 Activity 的 `onTouchEvent` 方法处理。
 
+2、ViewGroup 可以对事件进行拦截，拦截后事件不再往子 View 分发，交由发生拦截操作的 ViewGroup 的 `onTouchEvent` 处理。
 
+3、子 View 可以调用 `requestDisallowInterceptTouchEvent` 方法进行设置，从而阻止父 ViewGroup 的 `onInterceptTouchEvent` 拦截事件。
+
+4、如果 View 没有消费 ACTION_DOWN 事件，则之后的 ACTION_MOVE 等事件都不会再接收。
+
+5、只要 View 是可点击或者可长按的，则消费该事件。
+
+6、如果当前正在处理的事件被上层拦截，会收到一个 ACTION_CANCEL，后续事件不会再传递过来。
 
 ## 参考
 
