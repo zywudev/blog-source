@@ -129,7 +129,176 @@ Entry 是 ThreadLocalMap 的静态内部类，继承自 `WeakReference<ThreadLoc
 
 ## ThreadLocal 内存泄漏的问题
 
-首先绘制了 ThreadLocal 相关的对象引用内存图：
+首先绘制了 ThreadLocal 相关的对象引用内存图（实线代表强引用，虚线代表弱引用）：
+
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/threadlocal.png)
+
+图中我们看到 Entry 中的  value 一直有一条从 ThreadRef 连接过来的强引用，只有当前 Thread 结束时，ThreadRef 不在栈中，强引用断开， Thread、ThreadLocalMap、value 都会被 GC 回收。
+
+但是，如果使用的是线程池，那么之前的线程实例处理完之后出于复用的目的依然存活，这就发生了真正意义上的内存泄漏了。
+
+为了最小化减少内存泄露的可能性和影响，ThreadLocal 的设计中加入了一些防护措施。
+
+`getEntry` 方法：
+
+首先从索引位置获取 Entry，如果 Entry 不为空且key相同则返回 Entry，否则调用 `getEntryAfterMiss` 方法向下一个位置查询。
+
+```java
+private Entry getEntry(ThreadLocal<?> key) {
+    int i = key.threadLocalHashCode & (table.length - 1);
+    Entry e = table[i];
+    if (e != null && e.get() == key)
+        return e;
+    else
+        return getEntryAfterMiss(key, i, e);
+}
+```
+
+`getEntryAfterMiss` 方法：
+
+整个过程中，如果遇到 key 为空的情况，会调用 `expungeStaleEntry` 方法进行擦除 Entry（Entry 中的 value 对象没有了强引用，自然会被回收）。
+
+```java
+private Entry getEntryAfterMiss(ThreadLocal<?> key, int i, Entry e) {
+    Entry[] tab = table;
+    int len = tab.length;
+
+    while (e != null) {
+        ThreadLocal<?> k = e.get();
+        if (k == key)
+            return e;
+        if (k == null)
+            // 如果key值为null，则擦除该位置的Entry
+            expungeStaleEntry(i);
+        else
+            i = nextIndex(i, len);
+        e = tab[i];
+    }
+    return null;
+}
+```
+
+`expungeStaleEntry` 方法：
+
+```java
+private int expungeStaleEntry(int staleSlot) {
+    Entry[] tab = table;
+    int len = tab.length;
+
+    // 设置value为null
+    tab[staleSlot].value = null;
+    // 设置entry为null
+    tab[staleSlot] = null;
+    size--;
+    
+    Entry e;
+    int i;
+    for (i = nextIndex(staleSlot, len);
+         (e = tab[i]) != null;
+         i = nextIndex(i, len)) {
+        ThreadLocal<?> k = e.get();
+        if (k == null) {
+            e.value = null;
+            tab[i] = null;
+            size--;
+        } else {
+            int h = k.threadLocalHashCode & (len - 1);
+            if (h != i) {
+                tab[i] = null;
+                while (tab[h] != null)
+                    h = nextIndex(h, len);
+                tab[h] = e;
+            }
+        }
+    }
+    return i;
+}
+```
+
+`set` 方法：
+
+set 方法也有同样的操作，通过 `replaceStaleEntry` 方法将所有键为 null 的 Entry 的值设置为 null，从而使得该值可被回收。另外，会在 `rehash` 方法中通过 `expungeStaleEntry` 方法将键和值为 null 的 Entry 设置为 null 从而使得该 Entry 可被回收。通过这种方式，ThreadLocal 可防止内存泄漏。
+
+```java
+private void set(ThreadLocal<?> key, Object value) {
+
+    Entry[] tab = table;
+    int len = tab.length;
+    int i = key.threadLocalHashCode & (len-1);
+
+    for (Entry e = tab[i];
+         e != null;
+         e = tab[i = nextIndex(i, len)]) {
+        ThreadLocal<?> k = e.get();
+
+        if (k == key) {
+            e.value = value;
+            return;
+        }
+
+        if (k == null) {
+            replaceStaleEntry(key, value, i);
+            return;
+        }
+    }
+
+    tab[i] = new Entry(key, value);
+    int sz = ++size;
+    if (!cleanSomeSlots(i, sz) && sz >= threshold)
+        rehash();
+}
+```
+
+`replaceStaleEntry` 方法：
+
+```java
+private void replaceStaleEntry(ThreadLocal<?> key, Object value,
+                                       int staleSlot) {
+            Entry[] tab = table;
+            int len = tab.length;
+            Entry e;
+
+            int slotToExpunge = staleSlot;
+            for (int i = prevIndex(staleSlot, len);
+                 (e = tab[i]) != null;
+                 i = prevIndex(i, len))
+                if (e.get() == null)
+                    slotToExpunge = i;
+
+            for (int i = nextIndex(staleSlot, len);
+                 (e = tab[i]) != null;
+                 i = nextIndex(i, len)) {
+                ThreadLocal<?> k = e.get();
+
+                if (k == key) {
+                    e.value = value;
+
+                    tab[i] = tab[staleSlot];
+                    tab[staleSlot] = e;
+
+                    if (slotToExpunge == staleSlot)
+                        slotToExpunge = i;
+                    cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);
+                    return;
+                }
+
+                if (k == null && slotToExpunge == staleSlot)
+                    slotToExpunge = i;
+            }
+
+            tab[staleSlot].value = null;
+            tab[staleSlot] = new Entry(key, value);
+
+            if (slotToExpunge != staleSlot)
+                cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);
+        }
+```
+
+但是，以上的设计思路依赖一个前提条件：**必须调用 ThreadLocalMap  的 `getEntry` 和 `set` 方法。**
+
+如果这个前提条件不成立，还是会发生内存泄漏。所以，很多情况下需要手动去调用 ThreadLocal 的 `remove` 方法，手动删除不再需要的 ThreadLocal，进而释放 Entry，避免内存泄漏。此外，JDK 推荐 ThreadLocal 变量定义为 `private static` ，这样 ThreadLocal 的生命周期会更长，ThreadLocal 在线程运行中不会被回收，也就能保证任何时候都能够通过 ThreadLocal 的弱引用访问到 Entry 的 value 值，然后执行 remove 操作，防止内存泄漏。
+
+## 总结
 
 
 
