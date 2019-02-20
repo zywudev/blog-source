@@ -1,7 +1,7 @@
 ---
 title: Android Handler 消息处理机制
 date: 2018-01-07 15:55:35
-tags:
+tags: Android
 ---
 
 日常开发中，一般不会在子线程中直接进行 UI 操作，大部分采取的办法是创建 Message 对象，然后借助 Handler 发送出去，再在 Handler 的 handlerMessage() 方法中获取 Message 对象，进行一系列的 UI 操作。Handler 负责发送 Message， 又负责处理 Message， 其中经历了什么 ，需要从源码中一探究竟。
