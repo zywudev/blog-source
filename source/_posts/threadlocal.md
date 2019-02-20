@@ -11,6 +11,26 @@ ThreadLocal 提供了线程局部变量。它和普通变量的区别在于，�
 
 ## ThreadLocal 用法
 
+创建：
+
+```java
+ThreadLocal<Boolean> threadLocal = new ThreadLocal<>();
+```
+
+set 方法：
+
+```java
+threadLocal.set(false);
+```
+
+get 方法：
+
+```java
+threadLocal.get()
+```
+
+我们来看一个完整的示例：
+
 ```java
 // 定义一个 ThreadLocal 对象
 private ThreadLocal<Boolean> threadLocal = new ThreadLocal<>();
@@ -42,6 +62,20 @@ new Thread("Thread#2"){
 [Thread#main]threadLocal=true
 [Thread#1]threadLocal=false
 [Thread#2]threadLocal=null
+```
+
+## Android 中应用
+
+在 Android 中，Looper 类就是利用了 ThreadLocal 的特性，保证了每个线程只存在一个 Looper 对象。
+
+```java
+static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();
+private static void prepare(boolean quitAllowed) {
+    if (sThreadLocal.get() != null) {
+        throw new RuntimeException("Only one Looper may be created per thread");
+    }
+    sThreadLocal.set(new Looper(quitAllowed));
+}
 ```
 
 ## ThreadLocal 原理
@@ -87,9 +121,11 @@ void createMap(Thread t, T firstValue) {
 }
 ```
 
-所以可以总结下 ThreadLocal 的设计思路：每个 Thread 维护一个 ThreadLocalMap 映射表，这个映射表的 key 是 TreadLocal 实例本身，value 是真正存储的值。
+所以可以总结下 ThreadLocal 的设计思路：
 
-## ThreadLocalMap
+每个 Thread 维护一个 ThreadLocalMap 映射表，这个映射表的 key 是 TreadLocal 实例本身，value 是真正存储的值，ThreadLocalMap 只被持有它的线程访问，其他线程也就无法访问和修改。
+
+我们具体看一下 ThreadLocalMap。
 
 构造 ThreadLocalMap 的主要过程：
 
@@ -141,7 +177,7 @@ Entry 是 ThreadLocalMap 的静态内部类，继承自 `WeakReference<ThreadLoc
 
 `getEntry` 方法：
 
-首先从索引位置获取 Entry，如果 Entry 不为空且key相同则返回 Entry，否则调用 `getEntryAfterMiss` 方法向下一个位置查询。
+首先从索引位置获取 Entry，如果 Entry 不为空且 key 相同则返回 Entry，否则调用 `getEntryAfterMiss` 方法向下一个位置查询。
 
 ```java
 private Entry getEntry(ThreadLocal<?> key) {
@@ -294,13 +330,21 @@ private void replaceStaleEntry(ThreadLocal<?> key, Object value,
         }
 ```
 
-但是，以上的设计思路依赖一个前提条件：**必须调用 ThreadLocalMap  的 `getEntry` 和 `set` 方法。**
+但是，以上的设计思路依赖一个前提条件：**必须调用 ThreadLocalMap  的 `getEntry` 或者 `set` 方法。**
 
 如果这个前提条件不成立，还是会发生内存泄漏。所以，很多情况下需要手动去调用 ThreadLocal 的 `remove` 方法，手动删除不再需要的 ThreadLocal，进而释放 Entry，避免内存泄漏。此外，JDK 推荐 ThreadLocal 变量定义为 `private static` ，这样 ThreadLocal 的生命周期会更长，ThreadLocal 在线程运行中不会被回收，也就能保证任何时候都能够通过 ThreadLocal 的弱引用访问到 Entry 的 value 值，然后执行 remove 操作，防止内存泄漏。
 
 ## 总结
 
+1、ThreadLocal 通过隐式在不同的线程中创建实例副本，避免了实例线程安全的问题。
 
+2、ThreadLocalMap 的 Entry 对 ThreadLocal 的引用为弱引用，避免了 ThreadLocal 对象无法被回收问题。
+
+3、如果使用的是线程池，那么之前的线程实例处理完之后出于复用的目的依然存活，这时可能会出现内存泄漏。
+
+4、ThreadLocal 为避免上述的内存泄漏，在 get 和 set 方法中都做了防护措施，但前提是这两个方法得到了执行。因此很多情况下还需要手动调用 ThreadLocal 的 `remove` 方法，避免内存泄漏。
+
+5、当某些数据是以线程为作用域并且不同线程具有不同的数据副本的时候，就可以考虑采用 ThreadLocal。
 
 
 
