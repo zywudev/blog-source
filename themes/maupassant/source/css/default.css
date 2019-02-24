@@ -774,7 +774,7 @@ a.gitment-editor-footer-tip:hover {
 }
 
 .gitment-markdown code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: Consolas, Inconsolata, Courier, monospace;
   font-size: 12px;
 }
 

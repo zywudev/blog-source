@@ -1,7 +1,8 @@
 ---
 title: Android APK 打包过程
 date: 2018-07-07 20:51:23
-tags:
+tags: Android
+toc: true
 ---
 
 在日常开发中，每天都会点击 Android Studio 的 run 按钮运行很多次应用，Android Studio 很好地帮我们隐去了 APK 的生成流程，这中间经历了哪些流程，这里简单梳理记录下。

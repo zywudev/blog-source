@@ -1,6 +1,8 @@
 ---
 title: Git 命令备忘
 date: 2017-03-15 10:17:30
+tag: Git
+toc: true
 ---
 对 Git 常用命令归类总结，方便查阅。
 ## Git 配置

@@ -1,7 +1,8 @@
 ---
 title: Android View 的绘制过程
 date: 2018-10-16 16:54:55
-tags:
+tags: Android
+toc: true
 ---
 
 ## View 整体结构

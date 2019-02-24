@@ -2,6 +2,7 @@
 title: Android 事件分发机制
 date: 2018-10-10 17:13:11
 tags: Android
+toc: true
 ---
 
 ## MotionEvent

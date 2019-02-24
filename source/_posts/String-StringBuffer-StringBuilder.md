@@ -1,7 +1,8 @@
 ---
-title: String、StringBuilder和StringBuffer
+title: String、StringBuilder 和 StringBuffer
 date: 2018-09-09 20:56:56
-tags:
+tags: Java
+toc: true
 ---
 
 在之前的文章 [Java 中 String 类为什么要设计成不可变的？](http://wuzhangyang.com/2018/09/01/why-string-is-immutable/) 中对 String 的特性已经作了总结。这篇文章主要介绍另外两个常用的类 StringBuilder 和 StringBuffer 的特性。

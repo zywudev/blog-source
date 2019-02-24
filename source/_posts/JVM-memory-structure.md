@@ -2,6 +2,7 @@
 title: JVM内存结构
 date: 2019-01-10 14:59:11
 tags: JVM
+toc: true
 ---
 
 Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分为若干个不同的数据区域。

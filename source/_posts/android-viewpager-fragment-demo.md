@@ -1,7 +1,8 @@
 ---
 title: Android ViewPager 与 Fragment 懒加载
 date: 2018-04-23 20:59:05
-tags:
+tags: Android
+toc: true
 ---
 
 ViewPager + 多 Fragment 的模式很常用，但是 ViewPager 存在预加载的问题，如果多个 Fragment 都存在大量的网络请求或读写情况，就影响了 APP 性能和体验。在网上找到了一个比较好的[解决方法](https://www.jianshu.com/p/c5d29a0c3f4c#)，方法就是保留 ViewPager 的预加载，在 Fragment 被选中时再加载数据，记录一下。

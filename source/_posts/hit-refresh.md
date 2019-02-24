@@ -1,7 +1,8 @@
 ---
 title: 《刷新》书摘
 date: 2018-10-06 14:49:38
-tags:
+tags: 随笔
+toc: true
 ---
 
 1、

@@ -1,6 +1,7 @@
 ---
 title: 理解 ThreadLocal
 date: 2019-02-19 14:16:59
+toc : true
 tags: 
 - Android
 - Java

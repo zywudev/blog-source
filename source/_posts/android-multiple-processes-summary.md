@@ -1,7 +1,8 @@
 ---
 title: Android 多进程基本知识整理
 date: 2017-09-08 14:06:00
-tags:
+tags: Android
+toc: true
 ---
 
 在 Android 中，一个应用默认有一个进程。但我们可以通过配置实现在一个应用中开启多个进程。

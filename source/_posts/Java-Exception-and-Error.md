@@ -1,7 +1,8 @@
 ---
 title: Java Exception and Error 
 date: 2018-06-01 21:03:49
-tags:
+tags: Java
+toc: true
 ---
 
 ![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Java%E5%BC%82%E5%B8%B8.png)

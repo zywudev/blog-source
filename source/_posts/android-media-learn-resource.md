@@ -1,7 +1,7 @@
 ---
 title: Android 音视频学习资源汇总
 date: 2018-12-12 21:34:50
-tags:
+tags: Android
 ---
 
 1、[Android 音视频开发入门指南](http://blog.51cto.com/ticktick/1956269) ：音视频学习思路，一系列学习任务。

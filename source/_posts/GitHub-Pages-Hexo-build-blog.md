@@ -2,6 +2,7 @@
 title: GitHub Pages + Hexo 搭建博客
 date: 2017-03-04 17:53:39
 toc: true
+tag: Hexo
 ---
 第一篇博客，记录一下博客搭建过程。
 

@@ -1,7 +1,8 @@
 ---
 title: 推荐一个好用的 Android 屏幕适配的插件
 date: 2018-04-18 22:15:56
-tags:
+tags: Android
+toc: true
 ---
 
 Android 屏幕适配一直是个消耗时间，但没啥意思的活。

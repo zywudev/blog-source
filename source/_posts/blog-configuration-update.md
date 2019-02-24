@@ -1,6 +1,8 @@
 ---
 title: 博客配置更新
 date: 2017-04-19 13:51:29
+tag: Hexo
+toc: true
 ---
 
 今天，将博客主题由 [next](https://github.com/iissnan/hexo-theme-next) 换成了  [scribble](https://github.com/saintwinkle/hexo-theme-scribble)，关于博客的安装和 next 主题的配置详见 [GitHub Pages + Hexo 搭建博客](http://wuzhangyang.com/2017/03/04/GitHub-Pages-Hexo-build-blog/)。 然后对博客添加了些许功能。

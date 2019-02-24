@@ -1,7 +1,8 @@
 ---
 title: Android 编码规范
 date: 2017-08-28 15:34:14
-tags:
+tags: Android
+toc: true
 ---
 
 简单总结了 Android 开发中的一些代码规范，供开发者参考。

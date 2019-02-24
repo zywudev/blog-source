@@ -1,7 +1,8 @@
 ---
 title: 如何快速上传开源项目至 Jcenter
 date: 2018-07-03 22:15:21
-tags:
+tags: Jcenter
+toc: true
 ---
 
 前几天上传了个项目至 Jcenter，看了网上很多教程，基本都是以 `gradle-bintray-plugin ` 这个插件做上传，教程看着都好费劲，对于新手来说真的好麻烦。

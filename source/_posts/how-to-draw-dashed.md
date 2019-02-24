@@ -1,7 +1,8 @@
 ---
 title: Android 绘制虚线
 date: 2018-04-17 19:24:41
-tags:
+tags: Android
+toc: true
 ---
 
 Android 中绘制虚线可采用添加在布局文件中添加一个 View，然后给这个 View 加个虚线背景即可。

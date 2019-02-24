@@ -1,7 +1,8 @@
 ---
 title: Android onSaveInstanceState
 date: 2018-06-09 21:20:09
-tags:
+tags: Android
+toc: true
 ---
 
 1、onSaveInstanceState 调用时机？

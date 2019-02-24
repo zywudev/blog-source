@@ -1,7 +1,8 @@
 ---
 title: YUV 格式详解
 date: 2018-12-10 20:19:23
-tags:
+tags: Android
+toc: true
 ---
 
 ## 什么是 YUV/YCbCr/YPbPr？

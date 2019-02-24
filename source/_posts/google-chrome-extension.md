@@ -1,6 +1,8 @@
 ---
 title: Chrome 插件推荐
 date: 2017-05-31 19:54:06
+tag: Chrome
+toc: true
 ---
 
 近些年来，在众多浏览器大战中，Google 的 Chrome 浏览器的市场份额位居首位，而且依然呈现高速增长趋势。Chrome 浏览器的优点不必多言，谁用谁知道。

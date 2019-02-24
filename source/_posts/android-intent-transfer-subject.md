@@ -1,7 +1,8 @@
 ---
 title: Android Intent 传递自定义对象
 date: 2017-08-17 16:03:59
-tags:
+tags: Android
+toc: true
 ---
 
 Intent 可以用来启动活动、发送广播、启动服务等，通过 `putExtra` 方法可以添加一些附加数据，达到传值的效果，但若想传递自定义对象的时候就无能为力了。

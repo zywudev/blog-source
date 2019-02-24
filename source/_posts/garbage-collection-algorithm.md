@@ -1,7 +1,8 @@
 ---
-title: Java垃圾收集算法有哪些？
+title: Java 垃圾收集算法有哪些？
 date: 2019-01-15 14:13:32
 tags: JVM
+toc: true
 ---
 
 本文主要介绍几种 Java 垃圾收集算法的原理及其优缺点。

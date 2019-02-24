@@ -2,6 +2,7 @@
 title: JVM 安全点介绍
 date: 2019-01-18 11:00:30
 tags: JVM
+toc: true
 ---
 
 ## 什么是安全点？

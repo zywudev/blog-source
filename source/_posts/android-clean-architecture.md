@@ -1,7 +1,8 @@
 ---
 title: Android Clean 架构
 date: 2018-10-16 14:27:00
-tags:
+tags: Android
+toc: true
 ---
 
  Clean 一般是指，代码以洋葱的形状依据一定的依赖规则被划分为多层：内层对于外层一无所知。这就意味着**依赖只能由外向内**。

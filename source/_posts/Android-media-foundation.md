@@ -1,7 +1,7 @@
 ---
 title: Android 音视频基础知识
 date: 2018-11-14 21:13:57
-tags:
+tags: Android
 ---
 
 ## 视频编码
