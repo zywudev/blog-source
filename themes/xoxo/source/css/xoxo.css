@@ -4,6 +4,7 @@
 * {
   box-sizing: border-box;
 }
+
 *:before,
 *:after {
   box-sizing: border-box;
@@ -178,11 +179,11 @@ footer .bottom-item:hover {
 }
 html,
 body {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
 }
 body {
-  color: #202020;
+  color: #000000;
   line-height: 1.8rem;
   margin: 0;
 }
@@ -198,7 +199,7 @@ body {
 .nav-container .home-menu {
   border-bottom-style: solid;
   border-bottom-color: #f6f6f6;
-  border-bottom-width: 0.5px;
+  border-bottom-width: 1px;
   height: 50px;
   padding: 5px 20px;
   background: #fefefe;
@@ -253,7 +254,7 @@ body {
   margin-left: 10px;
   display: inline-block;
   vertical-align: middle;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Open Sans","PingFang SC","Hiragino Sans GB","Microsoft Yahei","Microsoft Jhenghei",sans-serif !default;
   font-weight: 700;
   font-size: 24px;
   line-height: 40px;
@@ -321,7 +322,10 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   border-top: none;
-}
+  border-bottom-style: solid;
+  border-bottom-color: #f6f6f6;
+  border-bottom-width: 1px;
+ }
 .recent-posts .recent-post-item .post-excerpt {
   color: #999;
   font-size: 14px;
@@ -354,7 +358,7 @@ body {
 }
 .recent-posts .recent-post-item .more {
   margin-top: -5px;
-  font-size: 14px!important;
+  font-size: 18px!important;
 }
 .recent-posts .recent-post-item .more:hover {
   color: #2196F3;
@@ -841,7 +845,7 @@ body {
 }
 .archives .archive .date {
   color: #999;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Open Sans","PingFang SC","Hiragino Sans GB","Microsoft Yahei","Microsoft Jhenghei",sans-serif !default;
   text-transform: uppercase;
   font-size: 1.0rem;
   font-weight: 300;
@@ -864,7 +868,7 @@ body {
 pre,
 code {
   background-color: #f6f6f6;
-  font-family: "Source Code Pro", "courier new", "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 pre {
   padding: 10px;
