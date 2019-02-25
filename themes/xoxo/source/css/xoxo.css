@@ -50,8 +50,8 @@ h4,
 h5,
 h6 {
   margin: 0.5rem 0;
-  line-height: 1.5rem;
-  font-weight: 500;
+  line-height: 1.8rem;
+  font-weight: 600;
 }
 b,
 optgroup,
@@ -179,12 +179,12 @@ footer .bottom-item:hover {
 }
 html,
 body {
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 400;
 }
 body {
   color: #000000;
-  line-height: 1.8rem;
+  line-height: 1.6rem;
   margin: 0;
 }
 .nav-container {
