@@ -13,7 +13,5 @@ date: 2017-03-04 14:53:59
 
 ## 联系我
 
-<img width="300px" height="300px" src="https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_jaqen_android.jpg"/>
-
-<img max-width="300px" src="http://pic15.photophoto.cn/20100615/0006019058815826_b.jpg"  height="330" width="335" >
+<img src="https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_jaqen_with_word.png"  height="330" >
 
