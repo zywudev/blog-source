@@ -13,5 +13,5 @@ date: 2017-03-04 14:53:59
 
 ## 联系我
 
-<img src="https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_jaqen_with_word.png"  height="330" >
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_jaqen_with_word.png)
 
