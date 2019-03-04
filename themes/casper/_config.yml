@@ -1,0 +1,83 @@
+# Config
+rss:            # link
+favicon: https://raw.githubusercontent.com/zywudev/blog-source/master/image/jaqen_logo.jpg
+blog_logo: 
+header_image: https://i.loli.net/2017/11/26/5a19c56faa29f.jpg
+bio: 我爱这被风带走不会再有的每一天
+post_toc: true
+
+# Keywords
+keywords: hexo, casper, ghost, theme
+
+# Menu
+menu:
+  ABOUT: /about
+  ARCHIVES: /archives
+  # you can add here
+
+# author
+author_image: https://raw.githubusercontent.com/zywudev/blog-source/master/image/jaqen_logo.jpg # link
+author_bio: 
+author_location: 
+
+# Social Links
+social:
+  weibo: https://www.weibo.com/u/2246722345
+  github: https://github.com/zywudev
+  twitter: https://twitter.com/wuzhangyang
+  # facebook: https://facebook
+  telegram:
+  bilibili: 
+  youtube: 
+  # You only can use that I have added, I will keep adding
+
+# Footer Links
+footer_text: 
+  # title: link
+  # 粤ICP备xxxxxxx号-x: http://www.miitbeian.gov.cn
+  # 粤公网安备xxxxxxx号: http://www.beian.gov.cn
+
+# Widget
+widgets:
+  recent_posts: true
+  category: true
+  tagcloud: true
+  # This is a simple theme, I think 3 is enough.
+
+# Gallery
+# https://github.com/sachinchoolur/lightgallery.js
+lightgallery: true
+
+# LazyLoad
+# home page has enabled, this value is to post page
+# https://github.com/dinbror/blazy
+lazyload: true
+
+# Local Search
+local_search: true
+
+# Comment
+# https://valine.js.org
+comment: true
+valine:
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki 
+  verify: false # Verification code
+  appId: mo9Qa2fH26LlQgm3onE9tgOV-gzGzoHsz # your leancloud application appid
+  appKey: UjpeJMaFJ6mOyUPRxC2Wpboq # your leancloud application appkey
+  placeholder: Leave a comment # comment box placeholder
+  pageSize: 10 # pagination size
+  avatar: mm # gravatar style
+
+# PWA
+# you need create a manifest.json file in hexo's source folder
+manifest: false
+service_workers: false
+
+navColor: '3c484e'
+
+# Baidu Push
+baidu: true
+
+# Google Analytics
+googleAnalytics: true
+GA_TRACKING_ID: UA-127464210-1
