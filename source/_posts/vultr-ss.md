@@ -2,7 +2,7 @@
 title: 科学上网 Vultr 搭建 SS 方法
 date: 2019-03-06 20:03:27
 tags: 科学上网
-cover_img: https://raw.githubusercontent.com/zywudev/blog-source/master/image/img1.png
+cover_img: https://raw.githubusercontent.com/zywudev/blog-source/master/image/img1.jpg
 feature_img:
 description:
 keywords:
