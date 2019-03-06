@@ -25,7 +25,7 @@ img {
 	font-size: 2rem;	
 }
 .post-img {
-	width: 100%;
+	min-width: : 50px;
 	min-height: 50px;
 	background: #C5D2D9 no-repeat 50%!important;
 	background-size: cover;
