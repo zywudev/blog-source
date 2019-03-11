@@ -1,12 +1,18 @@
 ---
-title: OkHttp 源码分析（一）请求流程
+title: OkHttp 源码分析（一）—— 请求流程
 date: 2019-03-04 09:37:43
 tags:
 ---
 
-## 基本使用
+OkHttp 是目前最为流行的网络请求框架，了解 OkHttp 的实现原理和设计思想是很有必要的。
 
-以下代码是 OkHttp 进行网络请求的简单使用。
+这篇文章主要梳理一下 OkHttp 的请求流程，对 OkHttp 的实现原理有个整体的把握，再深入细节的实现会更加容易。
+
+建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释，有需要的可以直接从  [这里](https://github.com/zywudev/android_source_code_analysis) 下载查看。
+
+一图胜千言，我们先看一下 OkHttp 的请求流程图。
+
+
 
 ```java
 // 1、创建 Request
@@ -41,6 +47,10 @@ call.enqueue(new Callback() {
     }
 });
 ```
+
+
+
+
 
 ## Request
 
