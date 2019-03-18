@@ -12,7 +12,7 @@ keywords:
 
 这篇文章主要梳理一下 OkHttp 的请求流程，对 OkHttp 的实现原理有个整体的把握，再深入细节的实现会更加容易。
 
-建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释，有需要的可以直接从  [这里](https://github.com/zywudev/android_source_code_analysis) 下载查看。
+建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从  [这里](https://github.com/zywudev/android_source_code_analysis) 下载查看。
 
 ## 基本使用
 
