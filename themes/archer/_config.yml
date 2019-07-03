@@ -39,14 +39,14 @@ about:
 
 # ========== Site ========== #
 # title of the site (good for SEO)
-SEO_title: Jaqen's Studio
+SEO_title: Jaqen's Blog
 # keywords for site (good for SEO)
 SEO_keywords:
   - hexo
   - 'hexo-theme'
   - 'hexo-blog'
 # main title shown in header image
-main_title: Jaqen's Studio
+main_title: Jaqen's Blog
 # subtitle
 subtitle: True mastery of any skill takes a lifetime
 # site haeder image
