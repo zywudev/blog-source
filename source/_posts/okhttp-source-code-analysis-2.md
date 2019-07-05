@@ -1,13 +1,9 @@
 ---
-title: OkHttp 源码分析（二）—— 缓存机制
+title: OkHttp 源码分析（二）：缓存机制
 date: 2019-03-11 16:24:08
 tags:
 - Android
 - 源码分析
-cover_img: https://raw.githubusercontent.com/zywudev/blog-source/master/image/img3.jpg
-feature_img:
-description:
-keywords:
 ---
 
 [上一篇文章](http://wuzhangyang.com/2019/03/11/okhttp-source-code-analysis-1/)我们主要介绍了 OkHttp 的请求流程，这篇文章讲解一下 OkHttp 的缓存机制。

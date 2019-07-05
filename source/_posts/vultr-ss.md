@@ -2,10 +2,6 @@
 title: 科学上网 Vultr 搭建 SS 方法
 date: 2019-03-06 20:03:27
 tags: 科学上网
-cover_img: https://raw.githubusercontent.com/zywudev/blog-source/master/image/img1.jpg
-feature_img:
-description:
-keywords:
 ---
 
 前几天，搬瓦工服务器到期了。准备再买的，但是最近搬瓦工被封的比较频繁，加上价格越来越高，想换一家试试，所以就找到了 vultr。
