@@ -26,7 +26,7 @@ U、V 表示色度（Chrominance 或 Chroma），描述的是色调和饱和度�
 
 YCbCr 其实是 YUV 经过缩放和偏移的翻版。其中 Y 与 YUV 中的 Y 含义一致,Cb,Cr 同样都指色彩，只是在表示方法上不同而已。YCbCr 其中 Y 是指亮度分量，Cb 指蓝色色度分量，而 Cr 指红色色度分量。
 
-![](https://zh.wikipedia.org/wiki/YUV#/media/File:Barn-yuv.png)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv-image.png)
 
 ## YUV 优点
 
@@ -169,9 +169,9 @@ YUV 与 RGB 之间的转换，就是将 图像所有像素点的 R、G、B 分�
 
 有如下转换公式：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv2rgb.svg)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv2rgb.png)
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/rgb2yuv.svg)
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/rgb2yuv.png)
 
 ## 参考
 
