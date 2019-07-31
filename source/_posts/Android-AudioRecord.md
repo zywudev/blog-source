@@ -16,12 +16,17 @@ tags:
 
 使用 AudioRecord 采集音频的一般步骤：
 
-- 初始化一个音频缓存大小，该缓存大于等于 AudioRecord 对象用于写声音数据的缓存大小，最小录音缓存可以通过`AudioRecord.getMinBufferSize` 方法得到。
-- 构造一个 AudioRecord 对象，需要传入缓冲区大小，如果缓存容量过小，将导致对象构造的失败。
-- 开始录音
-- 创建一个数据流，一边从 AudioRecord 中读取声音数据到初始化的缓存，一边将缓存中数据导入数据流。
-- 关闭数据流
-- 停止录音
+1\. 初始化一个音频缓存大小，该缓存大于等于 AudioRecord 对象用于写声音数据的缓存大小，最小录音缓存可以通过`AudioRecord.getMinBufferSize` 方法得到。
+
+2\. 构造一个 AudioRecord 对象，需要传入缓冲区大小，如果缓存容量过小，将导致对象构造的失败。
+
+3\. 开始录音
+
+4\. 创建一个数据流，一边从 AudioRecord 中读取声音数据到初始化的缓存，一边将缓存中数据导入数据流。
+
+5\. 关闭数据流
+
+6\. 停止录音
 
 ## 使用 AudioRecord 采集音频
 
@@ -29,7 +34,7 @@ tags:
 
 AudioRecord 采集的音频文件是  `pcm` 格式。
 
-pcm(Pulse Code Modulation) : 脉冲编码调制。模拟音频信号经模数转换（A/D变换）直接形成的二进制序列，pcm 文件没有附加的文件头和文件结束标志。
+pcm(Pulse Code Modulation) : 脉冲编码调制。模拟音频信号经模数转换（A/D 变换）直接形成的二进制序列，pcm 文件没有附加的文件头和文件结束标志。
 
 在模数转换过程中，使用三个参数来表示声音：采样率、声道数和采样位数。
 
@@ -39,70 +44,80 @@ pcm(Pulse Code Modulation) : 脉冲编码调制。模拟音频信号经模数转
 
 更为详细的解释可以看这篇文章「[PCM文件格式简介](https://blog.csdn.net/ce123_zhouwei/article/details/9359389)」。接下来介绍如何使用 AudioRecord 采集音频。
 
-1、初始化缓存大小
+1\. 初始化缓存大小
 
 可以通过`AudioRecord.getMinBufferSize` 方法得到最小录音缓存大小，传入的参数依次是采样频率、声道数和采样位数。
 
 ```java
-final int minBufferSize = AudioRecord.getMinBufferSize(AUDIO_SAMPLE_RATE_INHZ, AUDIO_CHANNEL, AUDIO_ENCODING);
+private int mBufferSizeInBytes;
+mBufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat);
 ```
 
-2、构造 AudioRecord 对象
+2\. 构造 AudioRecord 对象
 
 第一个参数表示音频来源。
 
 ```java
 private AudioRecord mAudioRecord;
-mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, AUDIO_SAMPLE_RATE_INHZ, AUDIO_CHANNEL, AUDIO_ENCODING, minBufferSize);
+mAudioRecord = new AudioRecord(audioSource, sampleRateInHz, channelConfig, audioFormat, mBufferSizeInBytes);
 ```
 
-3、初始化一个 buffer 数组
+3\. 初始化一个 buffer 数组
 
 ```java
-final byte[] data = new byte[minBufferSize];
+byte[] audioData = new byte[mBufferSizeInBytes];
 ```
 
-4、开始录音
+4\. 开始录音
 
 ```java
 mAudioRecord.startRecording();
 ```
 
-5、创建数据流，从 AudioRecord 中读取声音数据到初始化的 buffer 中，从 buffer 中将数据导入到数据流
+5\. 创建数据流，从 AudioRecord 中读取声音数据到初始化的 buffer 中，从 buffer 中将数据导入到数据流
 
 ```java
-new Thread(new Runnable() {
-    @Override
-    public void run() {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (fos != null) {
-            while (mIsRecording) {
-                int read = mAudioRecord.read(data, 0, minBufferSize);
-                if (AudioRecord.ERROR_INVALID_OPERATION != read) {
-                    try {
-                        fos.write(data);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+/**
+ * 将音频信息写入文件
+ */
+private void writeAudioDataToFile() throws IOException {
+    String pcmFilePath = FileUtil.getPcmFilePath(mContext, mPcmFileName);
+    File file = new File(pcmFilePath);
+    if (file.exists()) {
+        file.delete();
+    }
+    OutputStream bos = null;
+    try {
+        bos = new BufferedOutputStream(new FileOutputStream(file));
+        byte[] audioData = new byte[mBufferSizeInBytes];
+        while (mStatus == Status.STATUS_START) {
+            int readSize = mAudioRecord.read(audioData, 0, mBufferSizeInBytes);
+            if (readSize > 0) {
+                try {
+                    bos.write(audioData, 0, readSize);
+                    if (mRecordStreamListener != null) {
+                        mRecordStreamListener.onRecording(audioData, 0, readSize);
                     }
+                } catch (IOException e) {
+                    Log.e(TAG, "writeAudioDataToFile", e);
                 }
+            } else {
+                Log.w(TAG, "writeAudioDataToFile readSize: " + readSize);
             }
-            try {
-                Log.e(TAG, "关闭");
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        }
+        bos.flush();
+        if (mRecordStreamListener != null) {
+            mRecordStreamListener.finishRecord();
+        }
+    } finally {
+        if (bos != null) {
+            bos.close();// 关闭写入流
         }
     }
-}).start();
+}
 ```
 
-6、停止录音
+6\. 停止录音
 
 ```java
 if (null != mAudioRecord) {
@@ -245,7 +260,7 @@ public class PcmToWavUtil {
 
 ## 源码
 
-[https://github.com/zywudev/AndroidMediaNotes/tree/master/AudioDemo](https://github.com/zywudev/AndroidMediaNotes/tree/master/AudioDemo)
+[https://github.com/zywudev/AndroidMediaNotes](https://github.com/zywudev/AndroidMediaNotes)
 
 
 

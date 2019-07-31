@@ -11,18 +11,19 @@ tags:
 
 其中最大的区别是 MediaPlayer 可以播放多种格式的声音文件，例如 MP3，AAC，WAV，OGG，MIDI 等。MediaPlayer会在 framework 层创建对应的音频解码器。而 AudioTrack 只能播放已经解码的 PCM 流，如果对比支持的文件格式的话则是 AudioTrack 只支持 wav 格式的音频文件，因为 wav 格式的音频文件大部分都是 PCM流。AudioTrack 不创建解码器，所以只能播放不需要解码的wav文件。
 
-MediaPlayer在 framework 层还是会创建 AudioTrack，把解码后的 PCM 数流传递给 AudioTrack，AudioTrack再传递给 AudioFlinger 进行混音，然后才传递给硬件播放,所以是MediaPlayer 包含了 AudioTrack。
+MediaPlayer在 framework 层还是会创建 AudioTrack，把解码后的 PCM 数流传递给 AudioTrack，AudioTrack再传递给 AudioFlinger 进行混音，然后才传递给硬件播放,所以是 MediaPlayer 包含了 AudioTrack。
 
 ## AudioTrack 基本使用
 
 AudioTrack 有两种数据加载模式（MODE_STREAM 和 MODE_STATIC）， 对应着两种完全不同的使用场景。
 
-- MODE_STREAM：在这种模式下，通过 write 一次次把音频数据写到 AudioTrack 中。这和平时通过 write 调用往文件中写数据类似，但这种方式每次都需要把数据从用户提供的 Buffer 中拷贝到 AudioTrack 内部的 Buffer 中，在一定程度上会引起延时。为解决这一问题，AudioTrack 就引入了第二种模式。
-- MODE_STATIC：在这种模式下，只需要在 play 之前通过一次 write 调用，把所有数据传递到 AudioTrack 中的内部缓冲区，后续就不必再传递数据了。这种模式适用于像铃声这种内存占用较小、延时要求较高的文件。但它也有一个缺点，就是一次 write 的数据不能太多，否则系统无法分配足够的内存来存储全部数据。
+**MODE_STREAM**：在这种模式下，通过 write 一次次把音频数据写到 AudioTrack 中。这和平时通过 write 调用往文件中写数据类似，但这种方式每次都需要把数据从用户提供的 Buffer 中拷贝到 AudioTrack 内部的 Buffer 中，在一定程度上会引起延时。为解决这一问题，AudioTrack 就引入了第二种模式。
+
+**MODE_STATIC**：在这种模式下，只需要在 play 之前通过一次 write 调用，把所有数据传递到 AudioTrack 中的内部缓冲区，后续就不必再传递数据了。这种模式适用于像铃声这种内存占用较小、延时要求较高的文件。但它也有一个缺点，就是一次 write 的数据不能太多，否则系统无法分配足够的内存来存储全部数据。
 
 **播放流程：**
 
-1、创建 AudioTrack 播放对象，参数与 AudioRecord 有相似之处。
+1\. 创建 AudioTrack 播放对象，参数与 AudioRecord 有相似之处。
 
 ```java
 int channelConfig = AudioFormat.CHANNEL_OUT_MONO;
@@ -42,7 +43,7 @@ mAudioTrack = new AudioTrack(
     AudioManager.AUDIO_SESSION_ID_GENERATE);
 ```
 
-2、开始播放
+2\. 开始播放
 
 - MODE_STREAM 模式
 
@@ -99,7 +100,7 @@ mAudioTrack.write(mAudioData, 0, mAudioData.length);
 mAudioTrack.play();
 ```
 
-3、停止播放
+3\. 停止播放
 
 ```java
 if (mAudioTrack != null) {
@@ -111,5 +112,4 @@ if (mAudioTrack != null) {
 
 ## 源码
 
-[https://github.com/zywudev/AndroidMediaNotes/tree/master/AudioDemo](https://github.com/zywudev/AndroidMediaNotes/tree/master/AudioDemo)
-
+[https://github.com/zywudev/AndroidMediaNotes](https://github.com/zywudev/AndroidMediaNotes)
