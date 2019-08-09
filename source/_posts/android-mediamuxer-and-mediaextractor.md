@@ -199,9 +199,10 @@ private void extractVideo() {
 
 ## 源码
 
-[https://github.com/zywudev/AndroidMediaNotes](https://github.com/zywudev/AndroidMediaNotes)
+[https://github.com/zywudev/AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
 
 ## 参考
 
 https://blog.csdn.net/zhi184816/article/details/52514138
 
+https://www.cnblogs.com/renhui/p/7474096.html

@@ -260,9 +260,7 @@ public class PcmToWavUtil {
 
 ## 源码
 
-[https://github.com/zywudev/AndroidMediaNotes](https://github.com/zywudev/AndroidMediaNotes)
-
-
+[https://github.com/zywudev/AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
 
 
 

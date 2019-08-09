@@ -416,7 +416,7 @@ TextureView 与 SurfaceView 类似，这里就不贴代码了，具体可以看�
 
 ## 源码
 
-[https://github.com/zywudev/AndroidMediaNotes](https://github.com/zywudev/AndroidMediaNotes)
+[https://github.com/zywudev/AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
 
 以上只是 Camera 和 Camera2 的简单使用，更多细节可以查看官方 API。此外，关于 Android 相机的方向和尺寸适配、Camera 和 Camera2 的兼容选择等问题，后续会单独写文章描述。
 
