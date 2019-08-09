@@ -4,7 +4,7 @@ date: 2019-08-09 10:26:04
 tags: Python
 ---
 
-我比较喜欢看公众号，有时遇到一个感兴趣的公众号时，都会感觉相逢恨晚，想一口气看完所有历史文章。但是微信的阅读体验挺不好的，看历史文章得一页页的往前翻，下一次再看时还得重复操作，很是麻烦。
+我比较喜欢看公众号，有时遇到一个感兴趣的公众号时，都会感觉相逢恨晚，想一口气看完所有历史文章。但是微信的阅读体验挺不好的，看历史文章得一页页的往后翻，下一次再看时还得重复操作，很是麻烦。
 
 于是便想着能不能把某个公众号所有的文章都保存下来，这样就很方便自己阅读历史文章了。
 
@@ -204,7 +204,7 @@ def parse(index, biz, uin, key):
 
 ## 保存文章
 
-保存为 pdf 文件，用到了 python 的第三方库 pdfkit 和 wkhtmltopdf。
+**保存为 pdf 文件**，用到了 python 的第三方库 pdfkit 和 wkhtmltopdf。
 
 安装 pdfkit：
 
@@ -220,7 +220,7 @@ https://wkhtmltopdf.org/downloads.html
 
 安装后将 wkhtmltopdf 目录下的 bin 添加到环境变量中。
 
-保存为 chm 文件，可以下载 Easy CHM ，使用这个软件可以将 html 制作成 chm，使用教程网上比较多。
+**保存为 chm 文件**，可以下载 Easy CHM ，使用这个软件可以将 html 制作成 chm，使用教程网上比较多。
 
 下载地址：
 
@@ -230,17 +230,17 @@ http://www.etextwizard.com/cn/easychm.html
 
 ![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/chm.png)
 
-pdf 和 chm 对比：
+**pdf 和 chm 对比**：
 
-pdf 支持多终端，阅读体验好，但是有个大坑，就是微信文章保存的 pdf 没有图片，没找到解决方法。
+pdf 支持多终端，阅读体验好，但是有个大坑，就是微信文章保存的 pdf 没有图片，很影响阅读体验，暂未找到解决办法。
 
 chm 的好处是可以建立索引，查看文章方便。一个公众号制作成一个 chm 文件，管理方便。不会出现图片不显示问题。
 
-所以推荐保存为 chm 文件。
+所以推荐将爬取到的公众号文章保存为 chm 文件，方便阅读。
 
-完整代码：
+需要完整代码和文中相关软件的，可以关注公众号「JaqenAndroid」，后台回复关键词 ”**公众号文章**“ 获取。
 
-关注公众号「JaqenAndroid」，后台回复关键词 ”公众号文章“。
+![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_JaqenAndroid.jpg)
 
 
 
