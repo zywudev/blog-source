@@ -1,5 +1,5 @@
 ---
-title: Python 爬取微信公众号文章集
+title: 如何使用 Python 爬取微信公众号文章
 date: 2019-08-09 10:26:04
 tags: Python
 ---
@@ -238,7 +238,7 @@ chm 的好处是可以建立索引，查看文章方便。一个公众号制作�
 
 所以推荐将爬取到的公众号文章保存为 chm 文件，方便阅读。
 
-需要完整代码和文中相关软件的，可以关注公众号「JaqenAndroid」，后台回复关键词 ”**公众号文章**“ 获取。
+需要完整代码和文中相关软件的朋友，可以关注公众号「JaqenAndroid」，后台回复关键词 ”**公众号文章**“ 获取。
 
 ![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_JaqenAndroid.jpg)
 
