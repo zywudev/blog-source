@@ -16,7 +16,7 @@ tags: 随笔
 
 一旦完成这些工作，你对自己要学什么和怎样学都了然于胸，你就可以把控自己的学习计划中的每个关键点，通过「学习—实践—掌握—教授」(Learning, Doing, Learning and Teaching，LDLT) 的过程，获得对该学科的深刻理解，同时你也向着自己的目标前进。
 
-![](https://github.com/zywudev/blog-source/raw/master/image/ten-step-learing-method)
+![](https://github.com/zywudev/blog-source/raw/master/image/ten-step-learing-method.jpg)
 
 ### 第 1 步 了解全局
 

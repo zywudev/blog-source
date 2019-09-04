@@ -72,15 +72,15 @@ public String longestCommonPrefix(String[] strs) {
 }
 ```
 
-时间复杂度：O(S)，S 是所有字符串中字符数量的总和。
+时间复杂度：$O(S)$，S 是所有字符串中字符数量的总和。
 
-空间复杂度：O(1)。
+空间复杂度：$O(1)$。
 
 **解法 3:**
 
 分治思想。
 
-LCP(S1...Sn) == LCP(LCP(S1...Sk）,LCP(Sk+1...Sn))
+$LCP(S1...Sn) == LCP(LCP(S1...Sk）,LCP(Sk+1...Sn))$
 
 ```java
 public String longestCommonPrefix(String[] strs) {
