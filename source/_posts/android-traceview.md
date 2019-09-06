@@ -16,7 +16,7 @@ tags:
 
 trace 文件是 log 信息文件的一种，可以通过代码，Android Studio，或者 DDMS 生成。
 
-#### 使用代码生成 trace 文件
+### 使用代码生成 trace 文件
 
 在想要记录的地方调用 `Debug.startMethodTracing("sample")`，参数指定 `trace` 文件的名称。
 
@@ -30,7 +30,7 @@ Debug.stopMethodTracing();  // 结束 trace
 
 可以使用 adb 命令导出 trace 文件，使用 Android Studio Profiler 或者 DDMS 打开。
 
-#### 使用 Android Studio 生成 trace 文件
+### 使用 Android Studio 生成 trace 文件
 
 点击工具栏中的 Profiler（Android Studio 版本是 3.4.2）, 点击 CPU 时间轴上的任意位置以打开 CPU Profiler。
 
@@ -84,7 +84,7 @@ Debug.stopMethodTracing();  // 结束 trace
 
 - **Thread time**：实际经过的时间减去线程没有消耗 CPU 资源的时间。
 
-#### 使用 DDMS 生成 trace 文件
+### 使用 DDMS 生成 trace 文件
 
 DDMS 即 Dalvik Debug Monitor Server ，是 Android 调试监控工具，它为我们提供了截图，查看 log，查看视图层级，查看内存使用等功能。
 
@@ -123,8 +123,6 @@ DDMS 界面点击 `Start Method Profiling` 按钮，开始记录 trace，同一�
 第二种情况，可以使用 `Calls+RecurCalls/Total` 来查看它的调用情况。
 
 ## 参考文件
-
-- https://developer.android.google.cn/studio/profile/cpu-profiler
 
 - https://developer.android.google.cn/studio/profile/cpu-profiler
 - https://blog.csdn.net/u011240877/article/details/54347396

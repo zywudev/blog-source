@@ -1,6 +1,6 @@
 // You can change the following by yourself :-)
 // ========== DIY ========== //
-$feature-color: #1dbafc;
+$feature-color: #f75357;
 $code-theme: 'atom-one-dark'; // atom-one-dark or atom-one-light
 // ========== global variables ========== //
 $body-background-color: #fff;
@@ -79,6 +79,6 @@ $code-color-map: (
   )
 );
 @if not(map-has-key($code-color-map, $code-theme)) {
-  $code-theme: 'atom-one-light';
+  $code-theme: 'atom-one-dark';
 }
 $theme-colors: map-get($code-color-map, $code-theme);
