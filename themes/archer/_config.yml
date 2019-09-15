@@ -1,10 +1,10 @@
 # ========== Profile ========== #
 # avatar
-avatar: /avatar/Jaqen.png
+avatar: /assets/qrcode_jaqen_android.jpg
 # author name
 author: Jaqen Ng
 # signature
-signature: True mastery of any skill takes a lifetime
+signature: 
 # SNS (you can custom the order)
 social:
   email: zywu.dev@gmail.com
@@ -14,10 +14,10 @@ social:
   qq: 
   telegram: 
   weibo: https://www.weibo.com/u/2246722345
-  zhihu: 
+  zhihu: https://www.zhihu.com/people/zywu-43/activities
   douban: 
   facebook: 
-  twitter: https://twitter.com/wuzhangyang
+  # twitter: https://twitter.com/wuzhangyang
   instagram: 
   stack-overflow: 
   segmentFault: 
@@ -27,7 +27,7 @@ social:
   linkedin: 
   steam: 
   others: 
-  rss: http://wuzhangyang.com/atom.xml
+  # rss: http://wuzhangyang.com/atom.xml
 # friends
 # friends:
 #   friendA: //www.baidu.com
@@ -48,7 +48,7 @@ SEO_keywords:
 # main title shown in header image
 main_title: Jaqen's Blog
 # subtitle
-subtitle: True mastery of any skill takes a lifetime
+subtitle:
 # site haeder image
 site_header_image: 'https://source.unsplash.com/random'
 # post haeder image
@@ -73,7 +73,7 @@ comment:
   # Livere  site: https://livere.com/
   livere_uid: 
   # Disqus  site: https://disqus.com/
-  disqus_shortname: wuzhangyang
+  disqus_shortname: 
   # Gitment  site: https://github.com/imsun/gitment
   gitment_owner: 
   gitment_repo: 
@@ -82,9 +82,9 @@ comment:
   # Youyan  site: http://www.uyan.cc/
   youyan_uid: 
   # Valine  site: https://valine.js.org/
-  valine_appId: 
-  valine_appKey: 
-  valine_placeHolder: 
+  valine_appId: mo9Qa2fH26LlQgm3onE9tgOV-gzGzoHsz
+  valine_appKey: UjpeJMaFJ6mOyUPRxC2Wpboq
+  valine_placeHolder: 欢迎留言
 
 # ========== Analytics ========== #
 # enable Busuanzi analytics
