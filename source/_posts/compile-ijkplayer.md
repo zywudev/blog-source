@@ -43,3 +43,59 @@ sudo apt-get install yasm
 
 ### 拉取 ijkplayer 源码
 
+```shell
+git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
+cd ijkplayer-android
+git checkout -B latest k0.8.8
+```
+
+### 初始化 android
+
+```shell
+./init-android.sh
+```
+
+### 初始化 openssl 支持 https
+
+```shell
+./init-android-openssl.sh
+```
+
+### 配置编解码器格式支持
+
+默认为最少支持, 如果足够你使用, 可以跳过这一步. 否则可以改为以下配置:
+
+- `module-default.sh` 更多的编解码器/格式
+- `module-lite-hevc.sh` 较少的编解码器/格式(包括hevc)
+- `module-lite.sh` 较少的编解码器/格式(默认情况)
+
+```shell
+# 进入 config 目录
+cd config
+
+# 删除当前的 module.sh 文件
+rm module.sh
+
+# 创建软链接 module.sh 指向 module-default.sh
+ln -s module-default.sh module.sh
+```
+
+### 编译 openssl
+
+```shell
+# 进入 android/contrib 目录
+cd android/contrib
+
+# 清除 openssl 的编译文件
+./compile-openssl.sh clean
+
+# 编译 openssl
+./compile-openssl.sh all
+```
+
+
+
+### 编译 ffmpeg
+
+### 编译 ijkplayer
+
