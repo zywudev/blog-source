@@ -240,7 +240,5 @@ chm 的好处是可以建立索引，查看文章方便。一个公众号制作�
 
 需要完整代码和文中相关软件的朋友，可以关注公众号「JaqenAndroid」，后台回复关键词 ”**公众号文章**“ 获取。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_JaqenAndroid.jpg)
-
 
 
