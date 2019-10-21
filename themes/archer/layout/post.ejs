@@ -1,14 +1,7 @@
 <main class="main post-page">
-
     <article class="article-entry">
         <%- page.content %>
     </article>
- 
-    <hr color=#e0e1e2 size="1.5">
-    <p><font face="宋体" size="4.5" color="#f75357">一个有趣有用爱分享的公众号：JaqenAndroid，好看的人都已经关注啦:D</font></p>
-    <img align="center" src="https://raw.githubusercontent.com/zywudev/blog-source/master/image/qrcode_jaqen_android.jpg"/>
-
-	
     <!-- license  -->
     <% if(theme.copyright.enable === true && page.copyright !== false) { %>
         <div class="license-wrapper">
@@ -47,7 +40,4 @@
     <%- partial('_partial/comment/custom') %>
     <%- partial('_partial/comment/valine') %>
     <!-- 评论 -->
-
-    
 </main>
-
