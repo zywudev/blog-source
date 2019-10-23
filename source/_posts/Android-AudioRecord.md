@@ -5,14 +5,12 @@ tags:
 - Android音视频
 ---
 
-## AudioRecord 详解
+AudioRecord 类是 Android 系统提供的用于实现录音的功能类。
 
-首先看一下 Android 官方文档中对 [AudioRecord](https://developer.android.google.cn/reference/android/media/AudioRecord) 的概述：
+可以看一下 Android 官方文档中对 [AudioRecord](https://developer.android.google.cn/reference/android/media/AudioRecord) 的描述：
 
 > AndioRecord 类的主要功能是让各种 Java 应用能够管理音频资源，以便它们通过此类能够录制平台的声音输入硬件所收集的声音。此功能的实现就是通过 "pulling 同步"（reading读取）AudioRecord 对象的声音数据来完成的。在录音过程中，应用所需要做的就是通过后面三个类方法中的一个去及时地获取 AudioRecord 对象的录音数据。 AudioRecord 类提供的三个获取声音数据的方法分别是 read(byte[], int, int), read(short[], int, int), read(ByteBuffer, int)。无论选择使用那一个方法都必须事先设定方便用户的声音数据的存储格式。
 > 
-
-简单来说，AudioRecord 类是 Android 系统提供的用于实现录音的功能类。
 
 使用 AudioRecord 采集音频的一般步骤：
 
@@ -39,12 +37,13 @@ pcm(Pulse Code Modulation) : 脉冲编码调制。模拟音频信号经模数转
 在模数转换过程中，使用三个参数来表示声音：采样率、声道数和采样位数。
 
 - 采样率：采样频率，指每秒钟采集声音样本的次数。采样频率越高，声音的质量也就越好，声音还原度也就越真实。
+
 - 声道数：即单声道和立体声，相比单声道，立体声更能感觉到空间效果。
 - 采样位数：采样值。衡量声音波动变化的一个参数，也就是声卡的分辨率。数值越大，分辨率越高，所发出的声音能力越强。
 
-更为详细的解释可以看这篇文章「[PCM文件格式简介](https://blog.csdn.net/ce123_zhouwei/article/details/9359389)」。接下来介绍如何使用 AudioRecord 采集音频。
+更为详细的解释可以看这篇文章：[PCM文件格式简介](https://blog.csdn.net/ce123_zhouwei/article/details/9359389)。接下来看一下代码如何实现 AudioRecord 采集音频。
 
-1\. 初始化缓存大小
+**1\. 初始化缓存大小**
 
 可以通过`AudioRecord.getMinBufferSize` 方法得到最小录音缓存大小，传入的参数依次是采样频率、声道数和采样位数。
 
@@ -53,7 +52,7 @@ private int mBufferSizeInBytes;
 mBufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat);
 ```
 
-2\. 构造 AudioRecord 对象
+**2\. 构造 AudioRecord 对象**
 
 第一个参数表示音频来源。
 
@@ -62,19 +61,19 @@ private AudioRecord mAudioRecord;
 mAudioRecord = new AudioRecord(audioSource, sampleRateInHz, channelConfig, audioFormat, mBufferSizeInBytes);
 ```
 
-3\. 初始化一个 buffer 数组
+**3\. 初始化一个 buffer 数组**
 
 ```java
 byte[] audioData = new byte[mBufferSizeInBytes];
 ```
 
-4\. 开始录音
+**4\. 开始录音**
 
 ```java
 mAudioRecord.startRecording();
 ```
 
-5\. 创建数据流，从 AudioRecord 中读取声音数据到初始化的 buffer 中，从 buffer 中将数据导入到数据流
+**5\. 创建数据流，从 AudioRecord 中读取声音数据到初始化的 buffer 中，从 buffer 中将数据导入到数据流**
 
 ```java
 /**
@@ -117,7 +116,7 @@ private void writeAudioDataToFile() throws IOException {
 }
 ```
 
-6\. 停止录音
+**6\. 停止录音**
 
 ```java
 if (null != mAudioRecord) {
@@ -261,10 +260,3 @@ public class PcmToWavUtil {
 ## 源码
 
 [https://github.com/zywudev/AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
-
-
-
-
-
-
-

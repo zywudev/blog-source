@@ -12,9 +12,9 @@ tags:
 这种方式较为普遍简单。
 
 ```java
-ImageView imageView = findViewById(R.id.image_view);
-Bitmap bitmap = Util.getBitmapFromAssetsFile(this, "Jaqen.png");
-imageView.setImageBitmap(bitmap);
+ ImageView imageView = findViewById(R.id.image_view);
+        Bitmap bitmap = BitmapFactory.decodeFile(new File(FileUtil.getExternalAssetsDir(this), "jaqen.png").getPath());
+        imageView.setImageBitmap(bitmap);
 ```
 
 ## SurfaceView 绘制图片
@@ -23,32 +23,33 @@ SurfaceView 是 View 的一个子类，特点在于其实现了双缓冲技术�
 
 ```java
 SurfaceView surfaceView = findViewById(R.id.surface_view);
-surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        if (holder == null) {
-            return;
-        }
+        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                if (holder == null) {
+                    return;
+                }
 
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
-        Bitmap bitmap = Util.getBitmapFromAssetsFile(SurfaceViewActivity.this, "Jaqen.png");
-        Canvas canvas = holder.lockCanvas();
-        canvas.drawBitmap(bitmap, 0, 0, paint);
-        holder.unlockCanvasAndPost(canvas);
-    }
+                Paint paint = new Paint();
+                paint.setAntiAlias(true);
+                paint.setStyle(Paint.Style.STROKE);
+                Bitmap bitmap = BitmapFactory.decodeFile(new File(FileUtil.getExternalAssetsDir(SurfaceViewActivity.this), "jaqen.png").getPath());
 
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                Canvas canvas = holder.lockCanvas();
+                canvas.drawBitmap(bitmap, 0, 0, paint);
+                holder.unlockCanvasAndPost(canvas);
+            }
 
-    }
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
+            }
 
-    }
-});
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+
+            }
+        });
 ```
 
 ## 自定义 View 绘制图片
@@ -74,7 +75,8 @@ public class CustomView extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
-        mBitmap = Util.getBitmapFromAssetsFile(context, "Jaqen.png");
+        mBitmap = BitmapFactory.decodeFile(new File(FileUtil.getExternalAssetsDir(getContext()), "jaqen.png").getPath());
+
     }
 
     @Override
