@@ -1,9 +1,14 @@
 ---
-title: Java的强引用，软引用，弱引用，虚引用及其使用场景
-date: 2018-09-03 20:13:47
-tags: Java
-toc: true
+title: Android 面试题（3）：回答一下什么是强、软、弱、虚引用以及它们之间的区别？
+date: 2019-10-30 20:13:47
+tags: Android面试题
 ---
+
+> 这一系列文章致力于为 Android 开发者查漏补缺，面试准备。
+>
+> 所有文章首发于公众号「JaqenAndroid」，长期持续更新。
+>
+> 由于笔者水平有限，总结的答案难免会出现错误，欢迎留言指出，大家一起学习、交流、进步。
 
 从 JDK1.2 版本开始，把对象的引用分为四种级别，从而使程序能更加灵活的控制对象的生命周期。这四种级别由高到低依次为：强引用、软引用、弱引用和虚引用。
 
@@ -106,4 +111,4 @@ PhantomReference<Object> phantomReference = new PhantomReference<Object>(obj,ref
 
 **使用场景**：
 
-可以用来跟踪对象呗垃圾回收的活动。一般可以通过虚引用达到回收一些非java内的一些资源比如堆外内存的行为。例如：在 DirectByteBuffer 中，会创建一个 PhantomReference 的子类Cleaner的虚引用实例用来引用该 DirectByteBuffer 实例，Cleaner 创建时会添加一个 Runnable 实例，当被引用的 DirectByteBuffer 对象不可达被垃圾回收时，将会执行 Cleaner 实例内部的 Runnable 实例的 run 方法，用来回收堆外资源。
+可以用来跟踪对象呗垃圾回收的活动。一般可以通过虚引用达到回收一些非java内的一些资源比如堆外内存的行为。例如：在 DirectByteBuffer 中，会创建一个 PhantomReference 的子类 Cleaner 的虚引用实例用来引用该 DirectByteBuffer 实例，Cleaner 创建时会添加一个 Runnable 实例，当被引用的 DirectByteBuffer 对象不可达被垃圾回收时，将会执行 Cleaner 实例内部的 Runnable 实例的 run 方法，用来回收堆外资源。

@@ -122,7 +122,8 @@ DDMS 界面点击 `Start Method Profiling` 按钮，开始记录 trace，同一�
 
 第二种情况，可以使用 `Calls+RecurCalls/Total` 来查看它的调用情况。
 
-## 参考文件
+## 参考
 
-- https://developer.android.google.cn/studio/profile/cpu-profiler
-- https://blog.csdn.net/u011240877/article/details/54347396
+https://developer.android.google.cn/studio/profile/cpu-profiler
+
+https://blog.csdn.net/u011240877/article/details/54347396
