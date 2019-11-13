@@ -12,7 +12,7 @@ tags: 每周分享
 
 Android 源码在线阅读网站，支持交叉引用跳转，服务器在国内，访问速度很快。
 
-![](weekly-issue-2/aospxref.png)
+![](weekly-issue-2/aospxref.png))
 
 2、[octohint]( https://github.com/pd4d10/octohint )
 
