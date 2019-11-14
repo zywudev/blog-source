@@ -1,5 +1,5 @@
 ---
-title: Andoid面试题（5）：谈谈 Handler 机制和原理？
+title: Android 面试题（5）：谈谈 Handler 机制和原理？
 date: 2019-11-13 18:52:07
 tags: Android面试题
 ---

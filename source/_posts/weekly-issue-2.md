@@ -28,3 +28,7 @@ Android 源码在线阅读网站，支持交叉引用跳转，服务器在国内
 
 ![](weekly-issue-2/server.png)
 
+2、[命令行的艺术]( https://github.com/jlevy/the-art-of-command-line )
+
+3、[Flutter 实战]( https://github.com/flutterchina/flutter-in-action )
+
