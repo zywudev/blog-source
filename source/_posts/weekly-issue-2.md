@@ -6,7 +6,7 @@ tags: 每周分享
 
 这里记录过去一周，我看到的值得分享的内容。
 
-[![titu](weekly-issue-2/titu.jpg)](http://wuzhangyang.com/2019/11/16/weekly-issue-2/titu.jpg)
+[![titu](weekly-issue-2/titu.jpg)](weekly-issue-2/titu.jpg)
 
 （题图：J. Berengar Sölter ）
 
