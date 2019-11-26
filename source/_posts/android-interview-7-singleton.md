@@ -14,7 +14,7 @@ tags:
 
 UML 结构图：
 
-![singleton](andrid-interview-7-singleton/singleton.jpg)
+![singleton](android-interview-7-singleton/singleton.jpg)
 
 单例模式的三要点：
 
