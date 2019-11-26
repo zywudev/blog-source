@@ -97,7 +97,7 @@ public class LazySingleton {
 	
 	private LazySingleton() {}
 	
-	public static synchronized LazySingleton getInstance() {
+	public static LazySingleton getInstance() {
        // 第一重判断
 		if(instance == null) {
           // 锁定代码块
