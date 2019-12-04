@@ -1,11 +1,11 @@
 ---
 title: Java Exception and Error 
 date: 2018-06-01 21:03:49
-tags: Java
-toc: true
+tags: Java 基础
+categories: Java
 ---
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Java%E5%BC%82%E5%B8%B8.png)
+![java_exception_and_error](Java-Exception-and-Error/java_exception_and_error.png)
 
 1、Exception 和 Error 都是继承自 Throwable 类。
 

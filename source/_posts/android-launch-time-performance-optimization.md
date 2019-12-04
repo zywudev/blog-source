@@ -3,7 +3,9 @@ title: Android 应用启动速度优化
 date: 2019-09-09 10:55:36
 tags: 
 - 性能优化
-- Android
+- TraceView
+- Systrace
+categories: Android
 ---
 
 应用启动时间的长短，影响到用户体验。对研发人员来说，启动速度是我们的“门面”。

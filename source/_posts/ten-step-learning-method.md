@@ -1,7 +1,10 @@
 ---
 title: 程序员成长离不开的技能
 date: 2019-08-31 20:52:55
-tags: 随笔
+tags: 
+- 软技能
+- 十步学习法
+categories: 杂项
 ---
 
 很多人，在学生阶段习惯了被动、填鸭式学习，进入社会后，不知道如何去自我学习，严重限制了提升自己的知识和技能的机会。
@@ -16,7 +19,7 @@ tags: 随笔
 
 一旦完成这些工作，你对自己要学什么和怎样学都了然于胸，你就可以把控自己的学习计划中的每个关键点，通过「学习—实践—掌握—教授」(Learning, Doing, Learning and Teaching，LDLT) 的过程，获得对该学科的深刻理解，同时你也向着自己的目标前进。
 
-![](https://github.com/zywudev/blog-source/raw/master/image/ten-step-learing-method.jpg)
+![ten-step-learing-method](ten-step-learning-method/ten-step-learing-method.jpg)
 
 ### 第 1 步 了解全局
 

@@ -1,7 +1,10 @@
 ---
 title: Ubuntu 下 Android Studio 安装与配置
 date: 2019-10-14 14:12:28
-tags: Android Studio
+tags: 
+- Android Studio
+- Ubuntu
+categories: Linux
 ---
 
 本文主要记录一下 Ubuntu 环境下 Android Studio 的安装和配置，方便查找使用。
@@ -16,7 +19,7 @@ https://developer.android.com/studio
 
 然后进入 `/android-studio/bin/` 文件下，会看到一个`studio.sh`的执行文件。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/ubuntu_android_studio1.png)
+![ubuntu_android_studio1](ubuntu-android-studio/ubuntu_android_studio1.png)
 
 终端命令进入 `/android-studio/bin/ ` , 执行命令 `./studio.sh` ，进行安装即可，没啥好说的。
 
@@ -110,7 +113,7 @@ sudo mv /home/jaqen/Downloads/android-studio-ide-191.5900203-linux/android-studi
 nautilus  usr/share/applications
 ```
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/ubuntu_android_studio2.png)
+![ubuntu_android_studio2](ubuntu-android-studio/ubuntu_android_studio2.png)
 
 
 

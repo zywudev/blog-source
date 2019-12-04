@@ -2,7 +2,7 @@
 title: Git 命令备忘
 date: 2017-03-15 10:17:30
 tag: Git
-toc: true
+categories: Git
 ---
 对 Git 常用命令归类总结，方便查阅。
 ## Git 配置
@@ -109,5 +109,3 @@ git remote -v # 查看当前项目有哪些远程仓库
 
 git remote show origin # 查看远程服务器仓库状态
 ```
-
-（完）

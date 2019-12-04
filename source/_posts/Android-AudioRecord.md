@@ -2,7 +2,8 @@
 title: 使用 AudioRecord 采集音频
 date: 2019-07-08 14:02:55
 tags:
-- Android音视频
+- Android 音视频
+categories: Android
 ---
 
 AudioRecord 类是 Android 系统提供的用于实现录音的功能类。

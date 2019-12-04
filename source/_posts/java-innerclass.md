@@ -1,8 +1,8 @@
 ---
 title: Java 内部类总结
 date: 2019-02-27 10:31:37
-tags: Java
-toc: true
+tags: Java 基础
+categories: Java
 ---
 
 Java 中，可以将一个类定义在另一个类或者一个方法里面，这样的类称为内部类。

@@ -2,11 +2,11 @@
 title: Java 类加载器
 date: 2019-02-25 22:12:21
 tags: JVM
-toc: true
+categories: Java
 ---
 
 ## 类的生命周期
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/classloader_lifecycle.png)
+![classloader_lifecycle](java-classloader/classloader_lifecycle.png)
 包含七个阶段：
 
 加载、验证、准备、解析、初始化、使用、卸载。
@@ -125,7 +125,7 @@ public static void main(String[] args) {
 应用程序是由三种类加载器互相配合从而实现类加载，除此之外还可以加入自己定义的类加载器。
 
 下图展示了类加载器之间的层次关系，称为双亲委派模型（Parents Delegation Model）。该模型要求除了顶层的启动类加载器外，其它的类加载器都要有自己的父类加载器。类加载器之间的父子关系一般通过组合关系（Composition）来实现，而不是继承关系（Inheritance）。
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/parents_delegation.png)
+![parents_delegation](java-classloader/parents_delegation.png)
 
 #### 工作过程
 一个类加载器首先将类加载请求转发到父类加载器，只有当父类加载器无法完成时才尝试自己加载。

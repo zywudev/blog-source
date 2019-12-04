@@ -3,6 +3,7 @@ title: Android 面试题（1）：使用 Handler 时如何有效地避免内存�
 date: 2019-10-23 14:25:59
 tags:
 - Android面试题
+categories: Android面试题
 ---
 
 > 这一系列文章致力于为 Android 开发者查漏补缺，面试准备。

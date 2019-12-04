@@ -1,8 +1,8 @@
 ---
 title: Android onSaveInstanceState
 date: 2018-06-09 21:20:09
-tags: Android
-toc: true
+tags: Android 基础
+categories: Android
 ---
 
 1、onSaveInstanceState 调用时机？

@@ -2,7 +2,7 @@
 title: JVM 安全点介绍
 date: 2019-01-18 11:00:30
 tags: JVM
-toc: true
+categories: Java
 ---
 
 ## 什么是安全点？
@@ -69,7 +69,7 @@ Safe Region 是指在一段代码片段中，引用关系不会发生变化。�
 
 线程在进入 Safe Region 的时候先标记自己已进入了 Safe Region，等到被唤醒时准备离开 Safe Region 时，先检查能否离开，如果 GC 完成了，那么线程可以离开，否则它必须等待直到收到安全离开的信号为止。
 
-## 参考资料
+## 参考
 
 [深入理解Java虚拟机:JVM高级特性与最佳实践(第2版)](https://book.douban.com/subject/24722612/)
 

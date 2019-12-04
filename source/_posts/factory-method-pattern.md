@@ -1,8 +1,8 @@
 ---
 title: 设计模式之工厂方法模式
 date: 2017-06-15 19:38:00
-tag: 设计模式
-toc: true
+tags: 设计模式
+categories: 设计模式
 ---
 
 简单工厂模式提供了专门的工厂类用于创建对象，实现了对象的创建和使用分离。但工厂类集中了所有产品对象的创建逻辑，职责过重；此外，如果增加新产品，需要修改工厂类的源代码，违背开闭原则。
@@ -11,7 +11,7 @@ toc: true
 
 模式结构图如下：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/factory-method-pattern.jpg)
+![factory-method-pattern](factory-method-pattern/factory-method-pattern.jpg)
 
 共包含以下 4 个角色：
 

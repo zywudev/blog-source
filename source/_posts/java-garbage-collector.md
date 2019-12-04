@@ -4,13 +4,14 @@ date: 2019-01-17 20:43:05
 tags: 
 - JVM
 - GC
+categories: Java
 ---
 
 Java 垃圾收集器是 [垃圾收集算法](http://wuzhangyang.com/2019/01/15/garbage-collection-algorithm/) 的具体实现。
 
 下图展示的是 7 种作用于不同分代的收集器，如果两种收集器之前有连接，表示它们可以配合使用。收集器所在的位置表示它是属于新生代收集器还是老年代收集器。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/seven_garbage_collector.png)
+![seven_garbage_collector](java-garbage-collector/seven_garbage_collector.png)
 
 ## Serial 收集器
 
@@ -20,7 +21,7 @@ Java 垃圾收集器是 [垃圾收集算法](http://wuzhangyang.com/2019/01/15/g
 
 下图是 Serial 收集器的运行过程。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/serial_collector.png)
+![serial_collector](java-garbage-collector/serial_collector.png)
 
 ## ParNew 收集器
 
@@ -30,7 +31,7 @@ ParNew 收集器是 Serial 收集器的**多线程**版本。除了使用多线�
 
 在单 CPU 的环境，ParNew 收集器不会比 Serial 收集器更优秀。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/parnew_collector.png)
+![parnew_collector](java-garbage-collector/parnew_collector.png)
 
 ## Parallel Scavenge 收集器
 
@@ -52,13 +53,13 @@ Parallel Scavenge 收集器也是一个 **并行的多线程**新生代收集器
 
 Serial 收集器的老年代产品。同样是**单线程**，使用标**记整理算法**。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/serial_collector.png)
+![serial_collector](java-garbage-collector/serial_collector.png)
 
 ## Parallel Old 收集器
 
 Parallel Old 是 Parallel Scanvenge 的老年代版本，使用**多线程**和**标记整理算法**。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/parallel_old_collector.png)
+![parallel_old_collector](java-garbage-collector/parallel_old_collector.png)
 
 ## CMS 收集器
 
@@ -73,7 +74,7 @@ CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时�
 
 其中，初始标记、重新标记需要“Stop The World”。并发标记和并发清除时收集器线程可以与用户线程一起工作。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/cms_collector.png)
+![cms_collector](java-garbage-collector/cms_collector.png)
 
 **优势**：
 
@@ -93,7 +94,7 @@ CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时�
 
 G1 (Garbage First) 的各代存储地址是不连续的，每一代都使用了 n 个不连续的大小相同的 region， 每个 region 占有一块连续的虚拟内存地址。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/g1_region.png)
+![g1_region](java-garbage-collector/g1_region.png)
 
 G1 跟踪各个 Region 里面的垃圾堆积的价值大小（回收所获得的空间大小以及回收所需时间的经验值），在后台维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的 Region。
 
@@ -110,7 +111,7 @@ G1 跟踪各个 Region 里面的垃圾堆积的价值大小（回收所获得的
 - 最终标记（Final Marking）
 - 筛选回收（Live Data Counting and Evacuation）
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/g1_collector.png)
+![g1_collector](java-garbage-collector/g1_collector.png)
 
 **特点：**
 
@@ -129,7 +130,7 @@ G1 跟踪各个 Region 里面的垃圾堆积的价值大小（回收所获得的
 | **CMS**               | 并发             | 老年代        | 标记-清除          | 响应速度优先 | 集中在互联网站或B/S系统服务端上的Java应用 |
 | **G1**                | 并发             | both          | 标记-整理+复制算法 | 响应速度优先 | 面向服务端应用                            |
 
-## 参考资料
+## 参考
 
 [深入理解Java虚拟机:JVM高级特性与最佳实践(第2版)](https://book.douban.com/subject/24722612/)
 

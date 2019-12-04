@@ -1,7 +1,8 @@
 ---
 title: 使用 Camera 和 Camera2 采集视频数据
 date: 2019-07-15 16:06:01
-tags: Android音视频
+tags: Android 音视频
+categories: Android
 ---
 
 Android 中预览相机画面主要用 SurfaceView 和 TextureView。

@@ -2,6 +2,7 @@
 title: Android 面试题（2）：一般什么情况下会导致内存泄漏问题？
 date: 2019-10-24 17:30:47
 tags: Android面试题
+categories: Android面试题
 ---
 
 > 这一系列文章致力于为 Android 开发者查漏补缺，面试准备。

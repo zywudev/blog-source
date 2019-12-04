@@ -1,8 +1,8 @@
 ---
 title: Android 屏幕适配笔记
 date: 2017-08-02 13:19:11
-tag: Android
-toc: true
+tag: Android 基础
+categories: Android
 ---
 
 ## 基本概念

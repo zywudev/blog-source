@@ -2,16 +2,14 @@
 title: 设计模式之简单工厂模式
 date: 2017-04-26 10:46:26
 tag: 设计模式
-toc: true
+categories: 设计模式
 ---
-
-
 
 简单工厂模式将有关创建和初始化产品对象的工作搬到一个工厂类中，客户端只需要根据参数调用工厂类的静态方法即可使用工厂类创建的产品对象，无需承担对象的创建工作。这样做的好处就是将对象的创建和使用分离开来，能够防止用来实例化一个类的数据和代码在多个客户端类中到处都是，利于系统维护。
 
 模型结构图如下：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/simple_factory_pattern.png)
+![simple_factory_pattern](simple-factory-pattern/simple_factory_pattern.png)
 
 其中包含以下几个角色：
 
@@ -74,7 +72,7 @@ public class Client {
 
 有时，为了简化工厂模式，可以将抽象产品类和工厂类合并，将静态工厂方法移至抽象产品类。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/simple-factory-pattern-2.png)
+![simple-factory-pattern-2](simple-factory-pattern/simple-factory-pattern-2.png)
 
 **其主要缺点在于**：
 

@@ -1,8 +1,8 @@
 ---
 title: Android 加固技术调研
 date: 2018-10-09 19:09:25
-tags: Android
-toc: true
+tags: Android 加固
+categories: Android
 ---
 
 ## 第一代加固

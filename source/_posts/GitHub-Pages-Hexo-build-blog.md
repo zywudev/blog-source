@@ -2,7 +2,11 @@
 title: GitHub Pages + Hexo 搭建博客
 date: 2017-03-04 17:53:39
 toc: true
-tag: Hexo
+tag: 
+- Blog
+- Hexo
+- GitHub Pages
+categories: 杂项
 ---
 第一篇博客，记录一下博客搭建过程。
 
@@ -46,7 +50,7 @@ hexo s # 或 hexo server
 
 此时在浏览器地址栏中键入 [http://localhost:4000/](http://localhost:4000/) ， 可以看到内置的页面。
 
-![image](https://raw.githubusercontent.com/zywudev/blog-source/master/image/hexo-init-page.png)
+![hexo-init-page](GitHub-Pages-Hexo-build-blog/hexo-init-page.png)
 ## GitHub Pages 设置
 注册 GitHub 及其使用可以参考 [从 0 开始学习 GITHUB 系列汇总](http://stormzhang.com/github/2016/06/19/learn-github-from-zero-summary/)。
 
@@ -152,7 +156,7 @@ url: http://zywudev.github.io
 
 提交 sitemap 到 [Google站长工具](https://www.google.com/webmasters/tools/home?hl=zh-CN)，找到添加站点地图按钮，添加 `sitemap.xml` 即可，如下图。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/google-sitemap.png)
+![google-sitemap](GitHub-Pages-Hexo-build-blog/google-sitemap.png)
 
 
 ## 博客优化
@@ -235,7 +239,7 @@ timezone:
 ## 参考链接
 
 [如何搭建一个独立博客——简明Github Pages与Hexo教程](http://www.jianshu.com/p/05289a4bc8b2)
-[手把手教你使用Hexo + Github Pages搭建个人独立博客](https://linghucong.js.org/2016/04/15/2016-04-15-hexo-github-pages-blog/)
-[博客推广——提交搜索引擎](http://selfboot.cn/2014/12/21/add_blog_to_google/#站点地图)
 
-（完）
+[手把手教你使用Hexo + Github Pages搭建个人独立博客](https://linghucong.js.org/2016/04/15/2016-04-15-hexo-github-pages-blog/)
+
+[博客推广——提交搜索引擎](http://selfboot.cn/2014/12/21/add_blog_to_google/#站点地图)

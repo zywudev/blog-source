@@ -2,7 +2,7 @@
 title: 《禅与摩托车维修艺术》摘录
 date: 2018-01-28 19:12:54
 tags: 随笔
-toc: true
+categories: 随笔
 ---
 
 1.

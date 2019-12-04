@@ -1,8 +1,8 @@
 ---
 title: Android RxJava + Retrofit + Dagger2 + MVP
 date: 2018-08-05 18:05:10
-tags: Android
-toc: true
+tags: Android 资源
+categories: Android
 ---
 
 如何即快速掌握 Android RxJava + Retrofit + Dagger2 + MVP，以下是个人认为值得学习的开源项目、库以及技术教程，以下两个项目基本涵盖了当前 Android 开发中常用的主流技术框架，适合没有项目经验的同学，能够帮助你快速提高项目开发能力、掌握前沿技术。

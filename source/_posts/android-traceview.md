@@ -3,7 +3,8 @@ title: Android 性能分析工具 TraceView
 date: 2019-09-04 10:48:52
 tags:
 - 性能优化
-- Android
+- TraceView
+categories: Android
 ---
 
 在做应用启动、卡顿优化时，经常会用到 Android 性能分析工具 TraceView，这里简单介绍下 TraceView 的基础使用。
@@ -34,7 +35,7 @@ Debug.stopMethodTracing();  // 结束 trace
 
 点击工具栏中的 Profiler（Android Studio 版本是 3.4.2）, 点击 CPU 时间轴上的任意位置以打开 CPU Profiler。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/cpu_profiler1.png)
+![cpu_profiler1](android-traceview/cpu_profiler1.png)
 
 1\.  **事件时间轴**：显示应用中的 Activity 在其生命周期内不断转换而经历各种不同状态的过程，并指示用户与设备的交互，包括屏幕旋转事件。
 
@@ -56,11 +57,11 @@ Debug.stopMethodTracing();  // 结束 trace
 
 - **对 C/C++ 函数采样**：捕获应用的原生线程的采样跟踪数据。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/cpu_profiler2.png)
+![cpu_profiler2](android-traceview/cpu_profiler2.png)
 
 选择配置后，点击 `Record` 进行跟踪，交互完成后点击 `Stop` 结束数据跟踪。分析器会分析 trace 数据，如下图所示。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/cpu_profiler3.png)
+![cpu_profiler3](android-traceview/cpu_profiler3.png)
 
 1\. **选择时间范围**： 确定要在跟踪窗格中检查所记录时间范围的哪一部分。 当首次记录函数跟踪时，CPU Profiler 将在 CPU 时间线中自动选择完整长度。 如果想仅检查所记录时间范围一小部分的函数跟踪数据，可以点击并拖动突出显示的区域边缘以修改其长度。
 
@@ -92,7 +93,7 @@ Android Studio 3.0 后可在 Android SDK 的 `tools` 目录，找到 `monitor.ba
 
 DDMS 界面点击 `Start Method Profiling` 按钮，开始记录 trace，同一个按钮停止 trace。DDMS 会自动启用 TraceView 加载 trace 文件，如下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/ddms_trace.png)
+![ddms_trace](android-traceview/ddms_trace.png)
 
 图中上半部分展示了不同线程的执行时间，其中不同的颜色代表不同的方法，同一颜色越长，说明执行时间越长，空白表示这个时间段内没有执行内容。
 

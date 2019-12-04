@@ -2,6 +2,7 @@
 title: 科学上网 Vultr 搭建 SS 方法
 date: 2019-03-06 20:03:27
 tags: 科学上网
+categories: 工具
 ---
 
 前几天，搬瓦工服务器到期了。准备再买的，但是最近搬瓦工被封的比较频繁，加上价格越来越高，想换一家试试，所以就找到了 vultr。
@@ -20,7 +21,7 @@ ssh root@45.76.111.96
 
 接着输入密码（服务器密码，图中红框）。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/vultr1.png)
+![vultr1](vultr-ss/vultr1.png)
 
 ```shell
 wget –no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh
@@ -36,7 +37,7 @@ chmod +x shadowsocks.sh
 
 按任意键确认，出现以下信息表示搭建成功。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/vultr2.png)
+![vultr2](vultr-ss/vultr2.png)
 
 下载 [ss 客户端](https://github.com/shadowsocks)连接即可。
 

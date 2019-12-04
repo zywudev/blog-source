@@ -1,8 +1,8 @@
 ---
-title: 为什么 byte 的范围是 -128~127?
+title: 为什么 byte 的范围是 -128 ~ 127?
 date: 2019-01-06 21:06:42
-tags: Java
-toc: true
+tags: Java 基础
+categories: Java
 ---
 
 这是一个很基础的问题。但是在昨天之前，我都是只知其然，不知其所以然。

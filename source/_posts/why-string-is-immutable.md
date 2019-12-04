@@ -1,8 +1,8 @@
 ---
 title: Java 中 String 类为什么要设计成不可变的？
 date: 2018-09-01 20:18:41
-tags: Java
-toc: true
+tags: Java 基础
+categories: Java
 ---
 
 String 是 Java 中不可变的类，所以一旦被实例化就无法修改。不可变类的实例一旦创建，其成员变量的值就不能被修改。本文总结下 String 类设计成不可变的原因及好处，以及 String 类是如何设计成不可变的。
@@ -24,7 +24,7 @@ String s1 = "abc";
 String s2 = "abc";
 ```
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/string.png)
+![string](why-string-is-immutable/string.png)
 
 所以，如果字符串是可变的，那么常量池就没有存在的意义了。
 

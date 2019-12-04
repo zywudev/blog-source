@@ -2,7 +2,7 @@
 title: JVM 中如何判断对象可以被回收?
 date: 2019-01-12 20:34:01
 tags: JVM
-toc: true
+categories: Java
 ---
 
 JVM 的垃圾回收器主要关注的是堆上创建的实例对象，在每次对这些对象进行回收前，需要确定哪些对象是可以去进行回收的。
@@ -47,7 +47,7 @@ class GCObject {
 
 堆栈结构如下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_judge_object_recycle_1.png)
+![jvm_judge_object_recycle_1](how-do-jvm-kown-if-an-object-can-be-recycled/jvm_judge_object_recycle_1.png)
 
 `main` 方法中执行的 6 个步骤对应的引用计数结果：
 
@@ -99,9 +99,9 @@ JVM 中采用的是可达性分析算法判断对象是否可以被回收的。
 
 在上面的例子中，当执行第 5、6 步后，内存堆栈结构如下图。虽然实例 A 和实例 B 相互引用，但是它们到 GC Roots 都是不可达的了，所以它们都会被判定成可回收对象。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jvm_judge_object_recycle_2.png)
+![jvm_judge_object_recycle_2](how-do-jvm-kown-if-an-object-can-be-recycled/jvm_judge_object_recycle_2.png)
 
-## 参考资料
+## 参考
 
 [深入理解Java虚拟机:JVM高级特性与最佳实践(第2版)](https://book.douban.com/subject/24722612/)
 

@@ -1,7 +1,10 @@
 ---
 title: ijkplayer 编译实践
 date: 2019-10-14 16:41:32
-tags: Android音视频
+tags: 
+- Android 音视频
+- ijkplayer
+categories: Android
 ---
 
 记录 ijkplayer 的编译过程，以及遇到的问题，有需要的朋友可以参考。
@@ -171,7 +174,7 @@ cd ..
 
  编译完成之后，在 `android/ijkpleyer` 文件夹的对应架构文件下，在`/src/main/libs/架构名/`下生成`libijkplayer.so`、`libijkffmpeg.so`、`libijksdl.so` 三个文件。 
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/ijkplayer_so.png)
+![ijkplayer_so](compile-ijkplayer/ijkplayer_so.png)
 
 至此，ijkplayer 的编译工作就全部完成了。
 

@@ -2,7 +2,7 @@
 title: 经济机器是怎样运行的？
 date: 2018-10-16 23:11:33
 tags: 经济学
-toc: true
+categories: 杂项
 ---
 
 最近看到的一个视频，是大师级人物瑞达利欧自己的宏观经济框架，三十分钟解释了经济机器是怎样运行的，通俗易懂。
@@ -21,13 +21,13 @@ toc: true
 
 把三股动力结合在起来，就是一个简单有效的宏观经济分析模型。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FmsF7BD4DD5hfgImvkQaYzlTtkKS.png)
+![image_1](how-the-economic-machine-works/image_1.png)
 
 ## 交易
 
 交易时刻在发生，你每次买东西都是进行一笔交易。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FvQCv3JVuz57rmUjxd4DU8uug5mW.png)
+![image_2](how-the-economic-machine-works/image_2.png)
 
 在一次交易中，买方可以使用「货币、信用」向卖方交换「商品、服务、金融资产」。
 
@@ -37,13 +37,13 @@ toc: true
 
 在经济体中，有四种交易主体：个人、企业、银行和政府。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Figg9cHSAtL2ZTtrlXyYVhKa0hJZ.png)
+![image_3](how-the-economic-machine-works/image_3.png)
 
 其中政府是最大的买方和卖方。政府包括中央政府和中央银行。
 
 中央银行控制经济中的货币和信贷数量，主要通过利率和发行货币来控制。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FqMATSIoqtRTL1X0jvnrzxd_jHWi.png)
+![image_4](how-the-economic-machine-works/image_4.png)
 
 ## 信贷
 
@@ -51,7 +51,7 @@ toc: true
 
 一旦使用信用，则会同时产生「信贷」和「债务」，债务是贷款人的资产，是借款人的负债，借款人一旦获得信贷，便可以增加自己的支出，而一个人的支出是另一个人的收入，这就导致借贷在不断增加循环。这一驱动模式导致经济增长，也就形成了长短债务周期。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FtkkrVSfFYVyvoD4hqoc7XM0xTuM.png)
+![image_5](how-the-economic-machine-works/image_5.png)
 
 ## 经济周期
 
@@ -61,7 +61,7 @@ toc: true
 
 因为债务本质上是向未来的自己借钱，提前消费。你给自己设定了一个未来的时间，到那个时候你的支出必须少于收入，以便偿还债务，这样马上就产生了一个短期债务周期。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FkMlo3sJu1Bz9fANcC5qeU1-v0gq.png)
+![image_6](how-the-economic-machine-works/image_6.png)
 
 ### 短期债务周期
 
@@ -83,7 +83,7 @@ toc: true
 
 ## 去杠杆化
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Fg_v2zuiqmX2iPjWBdD1d-Oo1ixJ.png)
+![image_7](how-the-economic-machine-works/image_7.png)
 
 主要通过四种办法：
 

@@ -1,7 +1,9 @@
 ---
 title: Android 图片预览库封装
 date: 2019-05-07 10:44:00
-tags: Android
+tags: 
+- 开源库
+categories: Android
 ---
 
 基于 [PhotoView](https://github.com/chrisbanes/PhotoView)，增加手势旋转、拖动退出预览功能。

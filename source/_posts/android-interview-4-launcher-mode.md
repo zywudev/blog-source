@@ -1,7 +1,10 @@
 ---
 title: Android 面试题（4）：谈谈 Activity 的启动模式
 date: 2019-11-06 14:24:04
-tags: Android面试题
+tags: 
+- Android 基础
+- Android面试题
+categories: Android面试题
 ---
 
 > 这一系列文章致力于为 Android 开发者查漏补缺，面试准备。

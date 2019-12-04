@@ -1,15 +1,15 @@
 ---
 title: Android View 的绘制过程
 date: 2018-10-16 16:54:55
-tags: Android
-toc: true
+tags: 源码分析
+categories: Android
 ---
 
 ## View 整体结构
 
 Activity、Window、DecorView 之间的关系：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FsefzvUt3y5K6D1f262mDFGNwRsp.png)
+![view_1](the-drawing-process-of-android-view/view_1.png)
 
 **Activity**: 类似控制器，统筹视图的添加与显示，以及通过回调来与 Window、View 进行交互。
 
@@ -29,7 +29,7 @@ NavigationBar是虚拟按键。
 
 ## View 的工作流程
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FuMzXGfmOHg5VKedzv8MvIlE9JpA.png)
+![view_2](the-drawing-process-of-android-view/view_2.png)
 
 View 的绘制是从上往下一层层迭代，DecorView –> ViewGroup（—>ViewGroup）–> View ，依次 measure、layout 、draw。
 
@@ -78,7 +78,7 @@ public static class MeasureSpec {
 
 **measure 流程**
 
- 1、ViewRootImpl.performMeasure -> performMeasure()
+1、ViewRootImpl.performMeasure -> performMeasure()
 
 根据手机屏幕的宽高和 DecorView 的 LayoutParams 生成 DecorView 的 MeasureSpec，然后调用 DecorView 的 measure() 开始 DecorView 的测量。
 
@@ -96,7 +96,7 @@ DecorView 继承自 FrameLayout，所以会走到 FrameLayout 的 onMeasure() �
 
 根据父 View 的 MeasureSpec 和自身的 LayoutParams 参数进行测量。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Fo1gJQWDZccIp1nk-b72HlBkAfLd.png)
+![view_3](the-drawing-process-of-android-view/view_3.png)
 
 **细节：**
 
@@ -148,7 +148,7 @@ childMeasureSpec 的计算：
 
 布局也是自上而下，不同的是 ViewGroup 先在 layout() 中确定自己的布局，然后在 onLayout() 方法中再调用子View 的 layout() 方法，让子 View 布局。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FuyoJtSyZy8NbilQKC6f4aU_VdPz.png)
+![view_4](the-drawing-process-of-android-view/view_4.png)
 
 ### draw
 
@@ -159,13 +159,13 @@ draw 主要流程：
 - 绘制Children(dispatchDraw)
 - 绘制装饰（onDrawScrollBars）
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FuMME_uu0Sb6lbxjXmPherQOYs_k.png)
+![view_5](the-drawing-process-of-android-view/view_5.png)
 
-## 参考文档
+## 参考
 
-- [Window、Activity、DecorView以及ViewRoot之间的关系](https://love2.io/@funkkiid/doc/android_interview//android/basis/decorview.md)  
+[Window、Activity、DecorView以及ViewRoot之间的关系](https://love2.io/@funkkiid/doc/android_interview//android/basis/decorview.md)  
 
-- [View测量、布局及绘制原理](https://love2.io/@funkkiid/doc/android_interview//android/basis/custom_view.md)
+[View测量、布局及绘制原理](https://love2.io/@funkkiid/doc/android_interview//android/basis/custom_view.md)
 
 
 

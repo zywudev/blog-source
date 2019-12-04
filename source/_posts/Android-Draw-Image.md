@@ -2,7 +2,8 @@
 title: 使用三种不同的方式绘制图片
 date: 2019-07-05 15:07:02
 tags:
-- Android音视频
+- Android 音视频
+categories: Android
 ---
 
 在 Android 平台上绘制一张图片，使用三种不同的 API，ImageView、SurfaceView、自定义 View。

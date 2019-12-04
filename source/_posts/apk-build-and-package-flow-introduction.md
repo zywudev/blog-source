@@ -1,8 +1,8 @@
 ---
 title: Android APK 打包过程
 date: 2018-07-07 20:51:23
-tags: Android
-toc: true
+tags: Android 基础
+categories: Android
 ---
 
 在日常开发中，每天都会点击 Android Studio 的 run 按钮运行很多次应用，Android Studio 很好地帮我们隐去了 APK 的生成流程，这中间经历了哪些流程，这里简单梳理记录下。
@@ -11,7 +11,7 @@ Android APK 本质上是一个压缩包，打开后会发现就是各种资源�
 
 Android 官网给出的构建流程图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/android_build.png)
+![android_build](apk-build-and-package-flow-introduction/android_build.png)
 
 **从图中可以总结为 7 个步骤**：
 
@@ -29,9 +29,9 @@ Android 官网给出的构建流程图：
 
 7、通过 zipalign 工具，将签名后的 apk 进行对齐处理。
 
-更详细的流程图可以看下图：
+![android_build_detail](apk-build-and-package-flow-introduction/android_build_detail.png)更详细的流程图可以看下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/android_build_detail.png)
+
 
 **参考**
 

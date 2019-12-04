@@ -2,7 +2,7 @@
 title: JVM 中的内存溢出
 date: 2019-01-11 11:18:23
 tags: JVM
-toc: true
+categories: Java
 ---
 
 内存溢出，通俗一点，就是 JVM 内存不足了，没有空闲内存，并且垃圾收集器也无法提供更多内存。

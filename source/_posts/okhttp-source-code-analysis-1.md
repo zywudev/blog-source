@@ -2,12 +2,8 @@
 title: OkHttp 源码分析（一）：请求流程
 date: 2019-03-11 09:37:43
 tags:
-- Android
 - 源码分析
-cover_img: https://raw.githubusercontent.com/zywudev/blog-source/master/image/img2.jpg
-feature_img:
-description:
-keywords:
+categories: Android
 ---
 
 这篇文章主要梳理一下 OkHttp 的请求流程，对 OkHttp 的实现原理有个整体的把握，再深入细节的实现会更加容易。
@@ -478,7 +474,7 @@ protected void execute() {
 
 以上便是 Okhttp 整个请求的具体流程，流程图如下。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/okhttp.png)
+![okhttp](okhttp-source-code-analysis-1/okhttp.png)
 
 简述 OkHttp 的请求流程：
 

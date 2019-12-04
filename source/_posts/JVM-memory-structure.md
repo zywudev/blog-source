@@ -2,12 +2,12 @@
 title: JVM内存结构
 date: 2019-01-10 14:59:11
 tags: JVM
-toc: true
+categories: Java
 ---
 
 Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分为若干个不同的数据区域。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/java_memory_structure.png)
+![java_memory_structure](JVM-memory-structure/java_memory_structure.png)
 
 这些区域中，一些是线程私有的，一些是线程共享的。
 

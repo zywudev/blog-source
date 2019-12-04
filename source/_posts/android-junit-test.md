@@ -1,8 +1,8 @@
 ---
 title: Android 单元测试 Junit 
 date: 2018-10-24 15:15:38
-tags: Android
-toc: true
+tags: Junit
+categories: Android
 ---
 
 > 示例代码：https://github.com/zywudev/AndroidUnitTest
@@ -41,24 +41,24 @@ assertThat(String reason, T actual, Matcher<? super T> matcher);
 常用的匹配器整理：
 
 - is	断言参数等于后面给出的匹配表达式	
-	 not	断言参数不等于后面给出的匹配表达式	
-	  equalTo	断言参数相等	
-	  equalToIgnoringCase	断言字符串相等忽略大小写
-	 containsString	断言字符串包含某字符串	
-	 startsWith	断言字符串以某字符串开始
-	 endsWith	断言字符串以某字符串结束
-	 nullValue	断言参数的值为null
-	 notNullValue	断言参数的值不为null	
-	 greaterThan	断言参数大于	
-	 lessThan	断言参数小于
-	 greaterThanOrEqualTo	断言参数大于等于
-	 lessThanOrEqualTo	断言参数小于等于
-	 closeTo	断言浮点型数在某一范围内
-	 allOf	断言符合所有条件，相当于&&	
-	 anyOf	断言符合某一条件，相当于或
-	 hasKey	断言Map集合含有此键	
-	 hasValue	断言Map集合含有此值	
-	 hasItem	断言迭代对象含有此元素
+- not	断言参数不等于后面给出的匹配表达式	
+-  equalTo	断言参数相等	
+- equalToIgnoringCase	断言字符串相等忽略大小写
+- containsString	断言字符串包含某字符串	
+- startsWith	断言字符串以某字符串开始
+- endsWith	断言字符串以某字符串结束
+- nullValue	断言参数的值为null
+- notNullValue	断言参数的值不为null	
+- greaterThan	断言参数大于	
+- lessThan	断言参数小于
+- greaterThanOrEqualTo	断言参数大于等于
+- lessThanOrEqualTo	断言参数小于等于
+- closeTo	断言浮点型数在某一范围内
+- allOf	断言符合所有条件，相当于&&	
+- anyOf	断言符合某一条件，相当于或
+- hasKey	断言Map集合含有此键	
+- hasValue	断言Map集合含有此值	
+- hasItem	断言迭代对象含有此元素
 
 自定义匹配器：
 

@@ -2,11 +2,12 @@
 title: 每周分享第 1 期
 date: 2019-11-09 21:40:36
 tags: 每周分享
+categories: 每周分享
 ---
 
 这里记录过去一周，我看到的值得分享的内容。 
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/%E6%A0%A1%E9%95%BF%E4%BF%A1%E7%AE%B1%E5%92%8C%E7%94%B5%E8%AF%9D.jpg)
+![titu](weekly-issue-1/titu.jpg)
 
 （题图：大学一角，2019.10）
 

@@ -1,7 +1,10 @@
 ---
 title: Android 面试题（3）：回答一下什么是强、软、弱、虚引用以及它们之间的区别？
 date: 2019-10-30 20:13:47
-tags: Android面试题
+tags: 
+- Java 基础
+- Android面试题
+categories: Android面试题
 ---
 
 > 这一系列文章致力于为 Android 开发者查漏补缺，面试准备。

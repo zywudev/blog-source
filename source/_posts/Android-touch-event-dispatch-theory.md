@@ -1,8 +1,8 @@
 ---
 title: Android 事件分发机制
 date: 2018-10-10 17:13:11
-tags: Android
-toc: true
+tags: 源码分析
+categories: Android
 ---
 
 ## MotionEvent
@@ -30,7 +30,7 @@ toc: true
 
 事件分发流程示意图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/FmgOuTi01vHo_79e1HMRnYZwG920.png)
+![android_touch](Android-touch-event-dispatch-theory/android_touch.png)
 
 大致解释一下：
 

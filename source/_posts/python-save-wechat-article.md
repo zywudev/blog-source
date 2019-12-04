@@ -1,7 +1,8 @@
 ---
 title: 如何使用 Python 爬取微信公众号文章
 date: 2019-08-09 10:26:04
-tags: Python
+tags: 爬虫
+categories: Python
 ---
 
 我比较喜欢看公众号，有时遇到一个感兴趣的公众号时，都会感觉相逢恨晚，想一口气看完所有历史文章。但是微信的阅读体验挺不好的，看历史文章得一页页的往后翻，下一次再看时还得重复操作，很是麻烦。
@@ -26,11 +27,11 @@ https://blog.csdn.net/jingjingshizhu/article/details/80566191
 
 接下来，使用微信桌面客户端，打开某个公众号的历史文章，这里以我的公众号举例，如下图。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/wechat_article.png)
+![wechat_article](python-save-wechat-article/wechat_article.png)
 
 如果你的 fiddler 配置好了的话，能够看到如下图的数据。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/fiddler_wechat.png)
+![fiddler_wechat](python-save-wechat-article/fiddler_wechat.png)
 
 图中包含抓取的 url、一些重要的参数和我们想要的数据。
 
@@ -38,7 +39,7 @@ https://blog.csdn.net/jingjingshizhu/article/details/80566191
 
 接口返回的数据结构如下图，其中 `can_msg_continue` 字段控制着能否翻页，1 表示还有下一页，0 表示没有已经是最后一页了。 `next_offset` 字段就是下一次请求的 `offset` 参数。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/wechat_json.png)
+![wechat_json](python-save-wechat-article/wechat_json.png)
 
 ##  构造请求，获取数据
 
@@ -228,7 +229,7 @@ http://www.etextwizard.com/cn/easychm.html
 
 效果图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/chm.png)
+![chm](python-save-wechat-article/chm.png)
 
 **pdf 和 chm 对比**：
 

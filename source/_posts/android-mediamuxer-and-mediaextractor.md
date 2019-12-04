@@ -1,7 +1,8 @@
 ---
 title: 使用 MediaExtractor 和 MediaMuxer 分离合成音视频
 date: 2019-08-01 08:44:08
-tags: Android音视频
+tags: Android 音视频
+categories: Android
 ---
 
 一个音视频文件是由音频和视频组成的，Android 中可以通过 MediaExtractor  API 把音频或视频给单独抽取出来，通过 MediaMuxer 合成新的视频。

@@ -1,7 +1,9 @@
 ---
 title: YUV 格式详解
 date: 2019-07-28 20:19:23
-tags: Android音视频
+tags: 
+- Android 音视频
+categories: Android
 ---
 
 一般的视频采集芯片输出的码流一般都是 YUV 格式数据流，后续视频处理也是对 YUV 数据流进行编码和解析。所以，了解 YUV 数据流对做视频领域的人而言，至关重要。
@@ -26,7 +28,7 @@ U、V 表示色度（Chrominance 或 Chroma），描述的是色调和饱和度�
 
 YCbCr 其实是 YUV 经过缩放和偏移的翻版。其中 Y 与 YUV 中的 Y 含义一致,Cb,Cr 同样都指色彩，只是在表示方法上不同而已。YCbCr 其中 Y 是指亮度分量，Cb 指蓝色色度分量，而 Cr 指红色色度分量。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv-image.png)
+![yuv-image](yuv-format-explaination/yuv-image.png)
 
 ## YUV 优点
 
@@ -52,7 +54,7 @@ YUV 4:4:4 表示 Y、U、V 三分量采样率相同，即每个像素的三分�
 
 如下图所示：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv444.gif)
+![yuv444](yuv-format-explaination/yuv444.gif)
 
 ```java
 四个像素为： [Y0 U0 V0] [Y1 U1 V1] [Y2 U2 V2] [Y3 U3 V3]
@@ -68,7 +70,7 @@ YUV 4:2:2 表示 UV 分量的采样率是 Y 分量的一半。
 
 如下图所示：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv422.gif)
+![yuv422](yuv-format-explaination/yuv422.gif)
 
 ```java
 四个像素为： [Y0 U0 V0] [Y1 U1 V1] [Y2 U2 V2] [Y3 U3 V3]
@@ -90,7 +92,7 @@ YUV 4:2:0 并不意味着不采样 V 分量。它指的是对每条扫描线来�
 
 如下图所示：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv420.gif)
+![yuv420](yuv-format-explaination/yuv420.gif)
 
 ```java
 图像像素为：
@@ -145,11 +147,11 @@ YUV422P 属于 YUV422 的一种，它是一种 planer 模式，即 Y、U、V 分
 
 YUV420P 是基于 planar 平面模式进行存储，先存储所有的 Y 分量，然后存储所有的 U 分量或者 V 分量。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv420p.png)
+![yuv420p](yuv-format-explaination/yuv420p.png)
 
 同样，YUV420SP 也是基于 planar 平面模式存储，与 YUV420P 的区别在于它的 U、V 分量是按照 UV 或者 VU 交替顺序进行存储。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv420sp.png)
+![yuv420sp](yuv-format-explaination/yuv420sp.png)
 
 ### YU12 和 YU21
 
@@ -169,9 +171,9 @@ YUV 与 RGB 之间的转换，就是将 图像所有像素点的 R、G、B 分�
 
 有如下转换公式：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/yuv2rgb.png)
+![yuv2rgb](yuv-format-explaination/yuv2rgb.png)
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/rgb2yuv.png)
+![rgb2yuv](yuv-format-explaination/rgb2yuv.png)
 
 ## 参考
 

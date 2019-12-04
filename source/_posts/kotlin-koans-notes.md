@@ -4,6 +4,7 @@ date: 2019-06-28 17:07:12
 tags:
 - Android
 - Kotlin
+categories: Kotlin
 ---
 
 > [Kotlin Koans](https://github.com/Kotlin/kotlin-koans) 是 Kotlin 官方推出的一系列 Kotlin 语法练习。

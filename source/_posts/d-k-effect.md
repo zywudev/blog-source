@@ -2,6 +2,7 @@
 title: 达克效应
 date: 2018-12-05 20:26:53
 tags: 随笔
+categories: 随笔
 ---
 
 >**达克效应**（英语：D-K effect），全称为**邓宁-克鲁格效应**（英语：Dunning–Kruger effect），是一种[认知偏差](https://zh.wikipedia.org/wiki/%E8%AE%A4%E7%9F%A5%E5%81%8F%E5%B7%AE)，能力欠缺的人有一种虚幻的自我优越感，错误地认为自己比真实情况更加优秀。简言之即：庸人容易因欠缺自知之明而自我膨胀。
@@ -10,7 +11,7 @@ tags: 随笔
 
 参考网上，动手绘制了下面这张图，更为清晰。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/d-k-effect.png)
+![d-k-effect](d-k-effect/d-k-effect.png)
 
 从左往右，智慧从低到高，从下往上，是自信程度从低到高。
 

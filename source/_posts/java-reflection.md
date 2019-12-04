@@ -1,8 +1,8 @@
 ---
 title: Java 反射基础
 date: 2018-09-13 22:08:02
-tags: Java
-toc: true
+tags: Java 基础
+categories: Java
 ---
 
 最近在调研 Android 应用加固方案，涉及大量反射技术，因此趁这个机会总结下 Java 反射的一些知识。

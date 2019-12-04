@@ -1,7 +1,8 @@
 ---
 title: Android Activity 生命周期
 date: 2017-03-21 20:49:23
-tag: Android
+tag: Android 基础
+categories: Android
 ---
 本文目的在于详细总结 Activity 的生命周期。
 
@@ -35,9 +36,7 @@ Activity 类定义了 7 个回调方法。
 
 [Android 官网](https:Andr//developer.android.google.cn/guide/components/activities.html?hl=zh-cn)提供的 Activity 生命周期图如下图所示。
 
-<div style="text-align: center">
-<img src="https://raw.githubusercontent.com/zywudev/blog-source/master/image/activity_lifecycle.png"/>
-</div>
+![activity_lifecycle](activity-life-cycle/activity_lifecycle.png)
 
 ## Demo 实例 
 1、新建工程 ActivityLifeCycleTest。
@@ -125,7 +124,7 @@ public class MainActivity extends Activity {
 
 ```
 运行工程，主窗口如下左图所示，两个按钮分别用于启动 NormalActivity 和 DialogActivity。 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/activity_lifecycle_demo.png)
+![activity_lifecycle_demo](activity-life-cycle/activity_lifecycle_demo.png)
 
 
 1. 启动程序首次进入 MainActivity，依次执行了 `onCreate() - onStart() - onResume()` 方法。
@@ -135,9 +134,9 @@ public class MainActivity extends Activity {
 5. 按下返回键，执行了 `onResume()` 方法。
 6. 再按下返回键，依次执行 `onPause() - onStop() - onDestroy()` 方法。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/lifecyclelogcat.png)
+![lifecyclelogcat](activity-life-cycle/lifecyclelogcat.png)
 
-## 参考资料
+## 参考
 - [Android官方文档](https://developer.android.google.cn/guide/components/activities.html?hl=zh-cn)
 - [<第一行代码> 郭霖](https://www.amazon.cn/dp/B01MSR5D04)
 

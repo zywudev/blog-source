@@ -1,8 +1,8 @@
 ---
 title: Android APK 签名原理
 date: 2018-07-10 20:46:08
-tags: Android
-toc: true
+tags: Android 基础
+categories: Android
 ---
 
 Android APK 签名原理涉及到密码学的加密算法、数字签名、数字证书等基础知识，这里做个总结记录。

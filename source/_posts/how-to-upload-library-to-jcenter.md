@@ -2,7 +2,7 @@
 title: 如何快速上传开源项目至 Jcenter
 date: 2018-07-03 22:15:21
 tags: Jcenter
-toc: true
+categories: Android
 ---
 
 前几天上传了个项目至 Jcenter，看了网上很多教程，基本都是以 `gradle-bintray-plugin ` 这个插件做上传，教程看着都好费劲，对于新手来说真的好麻烦。
@@ -17,11 +17,11 @@ jcenter 是属于 bintray 的一个仓库，所以需要注册账户。注意默
 
 点击下图中的 `Add New Repository` 。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93.png)
+![jcenter_1](how-to-upload-library-to-jcenter/jcenter_1.png)
 
 出现下图的界面，**注意其中的 Name 和 Type 都要写成 maven**。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%932.png)
+![jcenter_2](how-to-upload-library-to-jcenter/jcenter_2.png)
 
 ### 3、引入 bintray-release
 
@@ -87,18 +87,18 @@ gradlew clean build bintrayUpload -PbintrayUser=username -PbintrayKey=xxxxxxxxxx
 
 其中 PbintrayUser 为用户名，PbintrayKey 是个人的 API Key，可在 bintray 网站上点击 Edit Profile，即可看到。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/APP_KEY.png)
+![jcenter_3](how-to-upload-library-to-jcenter/jcenter_3.png)
 
 上传成功后，访问 `https://bintray.com/用户名/maven`，即可看到上传的项目。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Logger.png)
+![jcenter_4](how-to-upload-library-to-jcenter/jcenter_4.png)
 
 注意此时还不能直接引用，因为项目还未添加到 Jcenter 仓库中。在下图的红色区域，未手动添加到 Jcenter 的会出现 `Add to Jcenter` 按钮，点击 `Add to Jcenter` 加入 `commit` 信息就行了，一般需要等待审核通过，几个小时吧，添加成功后`Add to Jcenter`那个按钮就消失了，如下图。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/Add_to_Jcenter.png)
+![jcenter_5](how-to-upload-library-to-jcenter/jcenter_5.png)
 
 同样，可以在 jcenter 仓库中可以看到自己的项目了。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/jcenter.png)
+![jcenter_6](how-to-upload-library-to-jcenter/jcenter_6.png)
 
 至此，整个流程就结束了，是不是很简单。

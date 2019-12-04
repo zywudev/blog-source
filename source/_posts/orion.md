@@ -2,12 +2,12 @@
 title: 朴树《猎户星座》
 date: 2017-04-29 12:55:34
 tag: 随笔
-toc: true
+categories: 随笔
 ---
 
 朴树终于出新专辑了。专辑的名称叫《猎户星座》。4 月 28 号零点在网易云音乐预售数字专辑。
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/orion.png)
+![orion](orion/orion.png)
 
 我第一次听到朴树的歌，是在 04 年，电视上播放丰田威驰的广告，放的就是朴树的 「Colorful Days」，当时觉得 MV 里的朴树酷极了。后来高中在学校，每个礼拜二和礼拜四下午放学后，校广播都会放 「Colorful Days」和 「生如夏花」。再后来上大学来到城市，耳边没有消失过的，总是他的歌。
 

@@ -3,8 +3,7 @@ title: 同步、异步、回调及观察者模式
 date: 2017-08-15 10:12:08
 tags: 
 - 设计模式
-- Java
-toc: true
+categories: Java
 ---
 
 ### **1、同步调用**

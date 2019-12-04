@@ -1,8 +1,10 @@
 ---
 title: Android 专用的日志封装库
 date: 2018-07-01 11:51:59
-tags: Android
-toc: true
+tags: 
+- Android 日志
+- 开源库
+categories: Android
 ---
 
 俗话说，要想程序不出 Bug， 那就一行代码也不写。

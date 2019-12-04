@@ -1,8 +1,11 @@
 ---
 title: Java 垃圾收集算法有哪些？
 date: 2019-01-15 14:13:32
-tags: JVM
-toc: true
+tags: 
+- JVM
+- GC
+- Java
+categories: Java
 ---
 
 本文主要介绍几种 Java 垃圾收集算法的原理及其优缺点。
@@ -13,7 +16,7 @@ toc: true
 
 对象标记的过程在 [Java 对象的自我救赎](http://wuzhangyang.com/2019/01/14/java-object-self-redemption/) 一文中有介绍。执行过程如下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/mark_sweep.png)
+![mark_sweep](garbage-collection-algorithm/mark_sweep.png)
 
 **它的不足之处在于**：
 
@@ -29,7 +32,7 @@ toc: true
 
 **商用虚拟机都采用这种算法回收新生代的对象**。因为新生代的对象每次回收都基本上只有 10% 左右的对象存活，需要复制的对象少，效率高。执行过程如下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/copying.png)
+![copying](garbage-collection-algorithm/copying.png)
 
 **优点：**
 
@@ -45,7 +48,7 @@ toc: true
 
 与标记清除算法类似，但不是在标记完成后对可回收对象进行清理，而是将所有存活的对象向一端移动，然后直接清理掉端边界以外的内存。执行过程如下图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/mark_compact.png)
+![mark_compact](garbage-collection-algorithm/mark_compact.png)
 
 **优点：**
 
@@ -63,7 +66,7 @@ toc: true
 
 老年代：对象存活率高，采取标记清理或者标记整理算法。
 
-## 参考资料
+## 参考
 
 [深入理解Java虚拟机:JVM高级特性与最佳实践(第2版)](https://book.douban.com/subject/24722612/)
 

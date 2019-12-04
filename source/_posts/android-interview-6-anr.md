@@ -2,6 +2,7 @@
 title: Android 面试题（6）：谈谈你对 ANR 的了解？
 date: 2019-11-19 15:36:55
 tags: Android面试题
+categories: Android面试题
 ---
 
 ## 什么是 ANR

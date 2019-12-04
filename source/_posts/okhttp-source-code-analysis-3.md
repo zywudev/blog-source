@@ -2,8 +2,8 @@
 title: OkHttp 源码分析（三）：连接机制
 date: 2019-03-27 19:50:20
 tags: 
-- Android
 - 源码分析
+categories: Android
 ---
 
 前面两篇文章分别介绍了 OkHttp 的请求流程和缓存机制，最后这篇文章介绍 OkHttp 的连接机制，作为 OkHttp 源码分析的收尾。

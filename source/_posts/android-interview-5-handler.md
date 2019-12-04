@@ -1,7 +1,9 @@
 ---
 title: Android 面试题（5）：谈谈 Handler 机制和原理？
 date: 2019-11-13 18:52:07
-tags: Android面试题
+tags: 
+- Android面试题
+categories: Android面试题
 ---
 
 > 这一系列文章致力于为 Android 开发者查漏补缺，准备面试。

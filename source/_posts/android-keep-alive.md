@@ -1,7 +1,8 @@
 ---
 title: Android 8.0 应用保活实践 
 date: 2018-11-27 22:17:17
-tags: Android
+tags: Android 保活
+categories: Android
 ---
 
 虽然我也觉得强行保活应用挺不厚道的，但是没办法，为了完成需求。
@@ -12,7 +13,7 @@ tags: Android
 
 直接看原理图：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/aidl-keep-alive.png)
+![aidl_keep_alive](android-keep-alive/aidl_keep_alive.png)
 
 原理就是利用 Binder 的讣告机制，如果 Service Binder 实体的进程被杀，系统会向 Client 发送讣告，这个时机就是保活的空子了。所以可以通过两个进程启动两个 Binder 服务，互为 C/S，一旦一个进程挂掉，另一个进程就会收到 Binder 讣告，这时可以拉起另一个进程。
 

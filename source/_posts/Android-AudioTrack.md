@@ -2,7 +2,8 @@
 title: 使用 AudioTrack 播放 PCM 音频
 date: 2019-07-08 15:31:02
 tags:
-- Android音视频
+- Android 音视频
+categories: Android
 ---
 
 Android 中播放声音可以用 MediaPlayer 和 AudioTrack，两者都提供了 Java API 供应用开发者使用。

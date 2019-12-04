@@ -1,10 +1,8 @@
 ---
 title: 理解 ThreadLocal
 date: 2019-02-19 14:16:59
-toc : true
-tags: 
-- Android
-- Java
+tags: Android 基础
+categories: Android
 ---
 
 ## ThreadLocal 是什么
@@ -168,7 +166,7 @@ Entry 是 ThreadLocalMap 的静态内部类，继承自 `WeakReference<ThreadLoc
 
 首先绘制了 ThreadLocal 相关的对象引用内存图（实线代表强引用，虚线代表弱引用）：
 
-![](https://raw.githubusercontent.com/zywudev/blog-source/master/image/threadlocal.png)
+![threadlocal](threadlocal/threadlocal.png)
 
 图中我们看到 Entry 中的  value 一直有一条从 ThreadRef 连接过来的强引用，只有当前 Thread 结束时，ThreadRef 不在栈中，强引用断开， Thread、ThreadLocalMap、value 都会被 GC 回收。
 

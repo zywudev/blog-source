@@ -1,8 +1,8 @@
 ---
 title: Android setContentView，Window，PhoneWindow and DecorView 
 date: 2018-02-23 10:03:06
-tags: Android
-toc: true
+tags: 源码分析
+categories: Android
 ---
 
 从 Activity 的 `setContentView(R.layout.activity_main)` 开始。

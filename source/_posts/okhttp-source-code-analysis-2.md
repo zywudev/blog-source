@@ -2,8 +2,8 @@
 title: OkHttp 源码分析（二）：缓存机制
 date: 2019-03-11 16:24:08
 tags:
-- Android
 - 源码分析
+categories: Android
 ---
 
 [上一篇文章](http://wuzhangyang.com/2019/03/11/okhttp-source-code-analysis-1/)我们主要介绍了 OkHttp 的请求流程，这篇文章讲解一下 OkHttp 的缓存机制。
@@ -18,7 +18,7 @@ tags:
 
 Http 的缓存机制如下图：
 
-![](https://github.com/zywudev/blog-source/raw/master/image/http-cache.png)
+![http-cache](okhttp-source-code-analysis-2/http-cache.png)
 
 Http 的缓存分为两种：强制缓存和对比缓存。强制缓存优先于对比缓存。
 
