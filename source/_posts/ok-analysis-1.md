@@ -8,7 +8,7 @@ categories: Android
 
 这篇文章主要梳理一下 OkHttp 的请求流程，对 OkHttp 的实现原理有个整体的把握，再深入细节的实现会更加容易。
 
-建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从  [这里](https://github.com/zywudev/android_source_code_analysis) 下载查看。
+建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从 [Android open framework analysis](https://github.com/zywudev/android-open-framework-analysis) 查看。
 
 ## 基本使用
 
@@ -270,6 +270,7 @@ Response getResponseWithInterceptorChain() throws IOException {
 - interceptors：配置 OkHttpClient 时设置的 inteceptors
 
 - RetryAndFollowUpInterceptor：负责失败重试以及重定向
+
 - BridgeInterceptor：负责把用户构造的请求转换为发送到服务器的请求、把服务器返回的响应转换为用户友好的响应
 - CacheInterceptor：负责读取缓存直接返回、更新缓存
 - ConnectInterceptor：负责和服务器建立连接
@@ -472,14 +473,16 @@ protected void execute() {
 
 ## 总结
 
-以上便是 Okhttp 整个请求的具体流程，流程图如下。
+以上便是 OkHttp 整个请求的具体流程，流程图如下。
 
-![okhttp](okhttp-source-code-analysis-1/okhttp.png)
+![okhttp](ok-analysis-1/ok.jpg)
 
 简述 OkHttp 的请求流程：
 
 - OkhttpClient 实现了 Call.Fctory，负责为 Request 创建 Call。
+
 - RealCall 是 Call 的具体实现，它的异步请求是通过 Dispatcher 调度器利用 ExcutorService 实现，而最终进行网络请求时和同步请求一样，都是通过 `getResponseWithInterceptorChain` 方法实现。
+
 - `getResponseWithInterceptorChain`  方法中采用了责任链模式，每一个拦截器各司其职，主要做两件事。
   - 拦截上一层拦截器封装好的 Request，然后自身对这个 Request 进行处理，处理后向下传递。
   - 接收下一层拦截器传递回来的 Response，然后自身对 Response 进行处理，返回给上一层。
@@ -487,5 +490,7 @@ protected void execute() {
 ## 参考
 
 - https://blog.piasy.com/2016/07/11/Understand-OkHttp/index.html
+
 - https://juejin.im/post/5a704ed05188255a8817f4c9
+
 - https://www.jianshu.com/p/37e26f4ea57b

@@ -8,7 +8,7 @@ categories: Android
 
 前面两篇文章分别介绍了 OkHttp 的请求流程和缓存机制，最后这篇文章介绍 OkHttp 的连接机制，作为 OkHttp 源码分析的收尾。
 
-建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从  [这里](https://github.com/zywudev/android_source_code_analysis) 下载查看。
+建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从 [Android open framework analysis](https://github.com/zywudev/android-open-framework-analysis) 查看。
 
 ## 创建连接
 

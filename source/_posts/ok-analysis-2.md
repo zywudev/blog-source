@@ -8,7 +8,7 @@ categories: Android
 
 [上一篇文章](http://wuzhangyang.com/2019/03/11/okhttp-source-code-analysis-1/)我们主要介绍了 OkHttp 的请求流程，这篇文章讲解一下 OkHttp 的缓存机制。
 
-建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从  [这里](https://github.com/zywudev/android_source_code_analysis) 下载查看。
+建议将 OkHttp 的源码下载下来，使用 IDEA 编辑器可以直接打开阅读。我这边也将最新版的源码下载下来，进行了注释说明，有需要的可以直接从 [Android open framework analysis](https://github.com/zywudev/android-open-framework-analysis) 查看。
 
 在网络请求的过程中，一般都会使用到缓存，缓存的意义在于，对于客户端来说，使用缓存数据能够缩短页面展示数据的时间，优化用户体验，同时降低请求网络数据的频率，避免流量浪费。对于服务端来说，使用缓存能够分解一部分服务端的压力。
 
@@ -18,7 +18,7 @@ categories: Android
 
 Http 的缓存机制如下图：
 
-![http-cache](okhttp-source-code-analysis-2/http-cache.png)
+![http-cache](ok-analysis-2/cache.png)
 
 Http 的缓存分为两种：强制缓存和对比缓存。强制缓存优先于对比缓存。
 
