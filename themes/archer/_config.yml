@@ -2,7 +2,7 @@
 # avatar
 avatar: /assets/qrcode_jaqen_android.jpg
 # author name
-author: Jaqen Ng
+author: 贾小昆
 # signature
 signature: 
 # SNS (you can custom the order)
@@ -34,19 +34,21 @@ social:
 #   friendB: //www.google.com
 #   friendC: 
 about:
-  enable: true
+  enable: false
   image: '/intro/about-bg.jpg'
 
 # ========== Site ========== #
 # title of the site (good for SEO)
-SEO_title: Jaqen Ng
+SEO_title: 贾小昆
 # keywords for site (good for SEO)
 SEO_keywords:
   - Android
   - 'Java'
   - 'JVM'
+  - '程序员'
+  - 'Python'
 # main title shown in header image
-main_title: Jaqen's Blog
+main_title: 贾小昆
 # subtitle
 subtitle:
 # site haeder image
