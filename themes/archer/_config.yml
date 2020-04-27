@@ -39,7 +39,7 @@ about:
 
 # ========== Site ========== #
 # title of the site (good for SEO)
-SEO_title: 贾小昆
+SEO_title: 贾小昆的个人网站
 # keywords for site (good for SEO)
 SEO_keywords:
   - Android
@@ -48,9 +48,9 @@ SEO_keywords:
   - '程序员'
   - 'Python'
 # main title shown in header image
-main_title: 贾小昆
+main_title: 贾小昆的个人网站
 # subtitle
-subtitle:
+subtitle: Jaqen's Personal Website
 # site haeder image
 site_header_image: 'https://source.unsplash.com/random'
 # post haeder image
