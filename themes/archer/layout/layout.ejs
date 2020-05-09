@@ -12,31 +12,39 @@
     <% } %>
     <%- partial('_partial/base-header') %>
 
-    <% if(is_post()) { %>
-        <div id="container1"> 
-    <% } %>
-    <div id="container"> 
-    <div class="wrapper">
-       
-            <%- partial('_partial/base-background-image') %>
-            <%- partial('_partial/script/font-loader') %>        
-            
-                <img class="loading" src="<%- url_for('assets/loading.svg') %>" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-                <div class="container container-unloaded">
-                    <%- body %>
-                    <!-- profile -->
-                    <% if (is_home()) { %>
-                    <%- partial('_partial/base-profile') %>
-                    <% } %>
-                </div>
-       
-        <%- partial('_partial/base-footer', {}, {cache: true}) %>
-    </div>
-    </div>
-    <% if(is_post()) { %>
-    </div> 
-    <% } %>
+	  <% if(is_post()) { %>
+            <div id="container"> 
+            <% } %>
 
+	    <div class="wrapper">
+	    
+	            <%- partial('_partial/base-background-image') %>
+	            <%- partial('_partial/script/font-loader') %>        
+	            
+	                <img class="loading" src="<%- url_for('assets/loading.svg') %>" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+	             
+	                <div class="container container-unloaded">
+	                    <%- body %>
+	                    <!-- profile -->
+	                    <% if (is_home()) { %>
+	                    <%- partial('_partial/base-profile') %>
+	                    <% } %>
+	                </div>
+
+	      
+		
+	       
+	        <%- partial('_partial/base-footer', {}, {cache: true}) %>
+	   
+	    </div>
+
+   </div>
+
+   <% if(is_post()) { %>
+		    </div> 
+		    <% } %>
+
+    
 
     <!-- toc -->
     <!-- <% if(is_post() && theme.toc) { %>
@@ -52,19 +60,22 @@
     <div class="back-top iconfont-archer">&#xe639;</div>
     <%- partial('_partial/sidebar/base-sidebar', {}, {cache: true}) %>
     <%- partial('./site-meta.ejs') %>
-
+   <%- partial('_partial/script/hide') %>
+   <!--  <% if(is_post()) { %>
 	<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 	<script>
 	    const btw = new BTWPlugin();
 	    btw.init({
-	        id: 'container1',
+	        id: 'container',
 	        blogId: '17295-1587352417052-803',
 	        name: '贾小昆',
 	        qrcode: 'https://ae01.alicdn.com/kf/H8211b56c06cc47b6846d7e607e7b23432.jpg',
 	        keyword: 'vip',
 	    });
 	</script>
-	
+
+	<% } %>
+	 -->
     <!-- CDN failover -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <script type="text/javascript">

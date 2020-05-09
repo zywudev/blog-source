@@ -1,19 +1,17 @@
 ---
 title: Android 音视频学习：使用 AudioRecord 和 AudioTrack API 完成音频 PCM 数据的采集和播放，并实现 PCM 保存为 WAV 文件
-date: 2020-04-24 10:36:51
+date: 2020-04-28 10:36:51
 tags: Android 音视频
 categories: Android 音视频
 ---
 
-在具体使用 AudioRecord 采集音频之前，简单了解一些音频理论基础知识。
+在具体使用 AudioRecord 采集音频之前，简单了解下 PCM。
 
 ## 什么是 PCM?
 
-PCM（pulse code modulation），脉冲编码调制，是用数字信号表示模拟信号的一种形式。它是数字音频在计算机、光盘、数字电话和其他数字音频应用中的标准形式。
+我们知道，声音本身是模拟信号，而计算机只能处理离散的数字信号，要在计算机中处理声音，就需要将声音数字化，这个过程叫模数转换（A/D 变换） 。模数转换直接生成的二进制序列称为 PCM（pulse code modulation， 脉冲编码调制）数据。它是数字音频在计算机、光盘、数字电话和其他数字音频应用中的标准形式。
 
-我们知道，声音本身是模拟信号，而计算机只能处理离散的数字信号，要在计算机中处理声音，就需要将声音数字化，这个过程叫模数转换（A/D 变换）。
-
-在模数转换过程中，使用三个参数来表示声音：采样频率、采样位数和声道数。
+要将模拟信号转为 PCM 时，需要将声音量化，我们一般从如下几个维度描述一段声音：
 
 **采样频率**：每秒钟采集声音样本的次数，它用赫兹（Hz）来表示。
 
@@ -23,11 +21,15 @@ PCM（pulse code modulation），脉冲编码调制，是用数字信号表示�
 
 **声道数**：很好理解，有单声道和立体声之分，单声道的声音只能使用一个喇叭发声（有的也处理成两个喇叭输出同一个声道的声音），立体声的 PCM 可以使两个喇叭都发声（一般左右声道有分工） ，更能感受到空间效果。 
 
+**时长**：采样的时长
+
 ![](android-audiorecord-and-audiotrack/Pcm.svg)
 
 ## 使用 AudioRecord 采集音频
 
 AudioRecord 类是 Android 系统提供的用于实现录音的功能类。
+
+开始录音的时候，AudioRecord 需要初始化一个相关联的声音 buffer, 这个 buffer 主要是用来保存新的声音数据。这个 buffer 的大小，我们可以在对象构造期间去指定。它表明一个 AudioRecord 对象还没有被读取（同步）声音数据前能录多长的音(即一次可以录制的声音容量)。声音数据从音频硬件中被读出，数据大小不超过整个录音数据的大小（可以分多次读出），即每次读取初始化 buffer 容量的数据。
 
 使用 AudioRecord 采集音频的一般步骤：
 
@@ -45,7 +47,7 @@ AudioRecord 类是 Android 系统提供的用于实现录音的功能类。
 
 ### 初始化缓存大小
 
-可以通过`AudioRecord#getMinBufferSize()` 方法得到最小录音缓存大小，传入的参数依次是采样频率、声道数和采样位数。
+可以通过 `AudioRecord#getMinBufferSize()` 方法得到最小录音缓存大小，传入的参数依次是采样频率、声道数和采样位数。
 
 ```java
 private int mBufferSizeInBytes;
@@ -128,7 +130,7 @@ if (null != mAudioRecord) {
 
 ## AudioRecord 和 MediaRecorder 的对比
 
-Android SDK 提供了两套音频采集的API，分别是：MediaRecorder 和 AudioRecord，前者是一个更加上层一点的API，它可以直接把手机麦克风录入的音频数据进行编码压缩（如 AMR、MP3 等）并存成文件，而后者则更接近底层，能够更加自由灵活地控制，可以得到原始的一帧帧 PCM 音频数据。
+Android SDK 提供了两套音频采集的 API，分别是：MediaRecorder 和 AudioRecord，前者是一个更加上层一点的API，它可以直接把手机麦克风录入的音频数据进行编码压缩（如 AMR、MP3 等）并存成文件，而后者则更接近底层，能够更加自由灵活地控制，可以得到原始的一帧帧 PCM 音频数据。
 
 如果想简单地做一个录音机，录制成音频文件，则推荐使用 MediaRecorder，而如果需要对音频做进一步的算法处理、或者采用第三方的编码库进行压缩、以及网络传输等应用，则建议使用 AudioRecord，其实 MediaRecorder 底层也是调用了 AudioRecord 与 Android Framework 层的 AudioFlinger 进行交互的。直播中实时采集音频自然是要用 AudioRecord 了。
 
@@ -236,19 +238,17 @@ MediaPlayer 在 framework 层还是会创建 AudioTrack，把解码后的 PCM �
 
 ## PCM 转 WAV
 
-Waveform Audio File Format（WAVE，又或者是因为 WAV 后缀而被大众所知的），它采用 RIFF（Resource Interchange File Format）文件格式结构。通常用来保存 PCM 格式的原始音频数据，所以通常被称为无损音频。但是严格意义上来讲，WAV 也可以存储其它压缩格式的音频数据。
+Waveform Audio File Format（WAVE，又或者是因为 WAV 后缀而被大众所知的），它采用 RIFF（Resource Interchange File Format）文件格式结构。通常用来保存 PCM 格式的原始音频数据，所以通常被称为无损音频。
 
 **WAV 和 PCM 的关系**
 
-PCM数据本身只是一个裸码流，它是由声道、采样位数、采样频率、时长共同决定的，因此我们至少要知道其中的三个才能将 PCM 所代表的数据提取出来。
+PCM 数据本身只是一个裸码流，它是由声道、采样位数、采样频率、时长共同决定的，因此我们至少要知道其中的三个才能将 PCM 所代表的数据提取出来。
 
-因此，纯 PCM 数据是无法播放的，因此还需要一段描述数据。计算机系统中的一个比较常见的做法是将pcm码流和描述信息封装在一起，形成一个音频文件。这样就可以直接播放了。
-
-一种常见的方式是使用 wav 格式定义的规范将 pcm 码流和描述信息封装起来。查看 pcm 和对应 wav 文件的 hex文件，可以发现，wav 件只是在 pcm 文件的开头多了 44bytes，来表征其声道数、采样频率和采样位数等信息。
+一种常见的方式是使用 WAV 格式定义的规范将 PCM 码流和描述信息封装起来。查看 PCM 和对应 WAV 文件的  hex 文件，可以发现，WAV 文件只是在 PCM 文件的开头多了 44bytes，来表征其声道数、采样频率和采样位数等信息。
 
 ![](android-audiorecord-and-audiotrack/wav.gif)
 
-pcm 转 wav 的实现代码如下：
+PCM 转 WAV 的实现代码如下：
 
 ```java
 public class PcmToWavUtil {
@@ -377,3 +377,9 @@ public class PcmToWavUtil {
 
 具体源码已经放在 GitHub：[AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
 
+## 参考资料
+
+- [计算机音频基础-PCM简介](https://www.cnblogs.com/TianFang/p/7894630.html)
+
+- [写给小白的音频认识基础](https://juejin.im/post/5a9ec68c6fb9a028bf04d8fd)
+- [WAV 文件格式](http://soundfile.sapp.org/doc/WaveFormat/)

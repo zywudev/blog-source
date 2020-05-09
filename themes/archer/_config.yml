@@ -84,9 +84,9 @@ comment:
   # Youyan  site: http://www.uyan.cc/
   youyan_uid: 
   # Valine  site: https://valine.js.org/
-  valine_appId: mo9Qa2fH26LlQgm3onE9tgOV-gzGzoHsz
-  valine_appKey: UjpeJMaFJ6mOyUPRxC2Wpboq
-  valine_placeHolder: 欢迎留言
+  valine_appId: 
+  valine_appKey: 
+  valine_placeHolder: 
 
 # ========== Analytics ========== #
 # enable Busuanzi analytics

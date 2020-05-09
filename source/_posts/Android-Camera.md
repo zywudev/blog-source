@@ -1,8 +1,8 @@
 ---
-title: 使用 Camera 和 Camera2 采集视频数据
-date: 2019-07-15 16:06:01
+title: Android 音视频学习：使用 Camera API 采集视频数据
+date: 2020-04-30 16:06:01
 tags: Android 音视频
-categories: Android
+categories: Android 音视频
 ---
 
 Android 中预览相机画面主要用 SurfaceView 和 TextureView。
