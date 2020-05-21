@@ -5,6 +5,8 @@ tags: Android 音视频
 categories: Android 音视频
 ---
 
+这篇文章的主要学习内容是：使用 Camera API 采集视频数据并保存到文件，分别使用 SurfaceView、TextureView 来预览 Camera 数据，取到 NV21 的数据回调。
+
 Android 中预览相机画面主要用 SurfaceView 和 TextureView。
 
 SurfaceView：SurfaceView 是一个有自己 Surface 的 View。界面渲染可以放在单独线程而不是主线程中。它更像是一个 Window，自身不能做变形和动画。
@@ -13,7 +15,20 @@ TextureView：TextureView 同样也有自己的 Surface。但是它只能在拥�
 
 更多关于 SurfaceView 和 TextureView 的知识可以看这篇文章 [Android 5.0(Lollipop)中的SurfaceTexture，TextureView, SurfaceView和GLSurfaceView](https://blog.csdn.net/jinzhuojun/article/details/44062175)。
 
-Android 5.0 之前系统提供了 Camera API ，5.0 之后提供了 Camera2 API。接下来，我们使用 SurfaceView 和 TextureView 实现相机预览的功能。
+Android 5.0 之前系统提供了 Camera API ，5.0 之后提供了 Camera2 API。
+
+不同手机厂商对 Camera2 的支持程度各不相同，即便是 Android 5.0 以上的手机，也存在对 Camera2 支持非常差的情况，这个时候就要降级使用 Camera。
+
+官方的开源库 [cameraview ](https://github.com/google/cameraview)给出的方案：
+
+| API Level | Camera API | Preview View |
+| --------- | ---------- | ------------ |
+| 9-13      | Camera1    | SurfaceView  |
+| 14-20     | Camera1    | TextureView  |
+| 21-23     | Camera2    | TextureView  |
+| 24        | Camera2    | SurfaceView  |
+
+接下来，我们使用 SurfaceView 和 TextureView 实现相机预览的功能。
 
 ## Camera
 
@@ -413,16 +428,12 @@ public class Camera2SurfaceView extends SurfaceView implements SurfaceHolder.Cal
 
 ### 使用 TextureView
 
-TextureView 与 SurfaceView 类似，这里就不贴代码了，具体可以看源码。
+TextureView 与 SurfaceView 类似，这里就不贴代码了。
 
-## 源码
+具体源码放在 GitHub 上：[AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
 
-[https://github.com/zywudev/AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
-
-以上只是 Camera 和 Camera2 的简单使用，更多细节可以查看官方 API。此外，关于 Android 相机的方向和尺寸适配、Camera 和 Camera2 的兼容选择等问题，后续会单独写文章描述。
+以上只是 Camera 和 Camera2 的简单使用，更多细节可以查看官方 API。
 
 ## 参考
 
-[https://juejin.im/post/5a33a5106fb9a04525782db5](https://juejin.im/post/5a33a5106fb9a04525782db5)
-
-[https://www.cnblogs.com/renhui/p/7472778.html](https://www.cnblogs.com/renhui/p/7472778.html)
+[Android平台Camera开发实践指南](https://juejin.im/post/5a33a5106fb9a04525782db5)

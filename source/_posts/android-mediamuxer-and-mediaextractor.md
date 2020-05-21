@@ -1,11 +1,13 @@
 ---
-title: 使用 MediaExtractor 和 MediaMuxer 分离合成音视频
-date: 2019-08-01 08:44:08
+title: Android 音视频学习：使用 MediaExtractor 和 MediaMuxer 解析和封装 mp4 文件
+date: 2020-05-21 08:44:08
 tags: Android 音视频
-categories: Android
+categories: Android 音视频
 ---
 
-一个音视频文件是由音频和视频组成的，Android 中可以通过 MediaExtractor  API 把音频或视频给单独抽取出来，通过 MediaMuxer 合成新的视频。
+这篇文章的目的主要是学习 Android 平台的 MediaExtractor 和 MediaMuxer API，知道如何解析和封装 mp4 文件。
+
+一个音视频文件是包含音频和视频，Android 中可以通过 MediaExtractor  API 把音频或视频给单独抽取出来，通过 MediaMuxer 合成新的视频。
 
 ## MediaExtractor
 
@@ -13,19 +15,19 @@ MediaExtractor 的作用就是将音频和视频分离。
 
 主要是以下几个步骤：
 
-1\. 创建实例
+1、创建实例
 
 ```java
 MediaExtractor mediaExtractor = new MediaExtractor();
 ```
 
-2\. 设置数据源
+2、设置数据源
 
 ```java
 mediaExtractor.setDataSource(path);
 ```
 
-3\.  获取数据源的轨道数，切换到想要的轨道
+3、获取数据源的轨道数，切换到想要的轨道
 
 ```java
 // 轨道索引
@@ -47,7 +49,7 @@ for (int i = 0; i < trackCount; i++) {
 mediaExtractor.selectTrack(videoIndex);
 ```
 
-4\. 对所需轨道数据循环读取读取每帧，进行处理
+4、对所需轨道数据循环读取读取每帧，进行处理
 
 ```java
 while (true) {
@@ -65,7 +67,7 @@ while (true) {
 }
 ```
 
-5\. 完成后释放资源
+5、完成后释放资源
 
 ```java
 mediaExtractor.release();
@@ -77,7 +79,7 @@ MediaMuxer 的作用是生成音频或视频文件；还可以把音频与视频
 
 主要是以下几个步骤：
 
-1\. 创建实例
+1、创建实例
 
 ```java
 MediaMuxermediaMuxer = new MediaMuxer(path, format);
@@ -85,19 +87,19 @@ MediaMuxermediaMuxer = new MediaMuxer(path, format);
 
 path: 输出文件的名称；format: 输出文件的格式，当前只支持 MP4 格式。
 
-2\. 将音频轨或视频轨添加到 MediaMuxer，返回新的轨道
+2、将音频轨或视频轨添加到 MediaMuxer，返回新的轨道
 
 ```java
 int trackIndex = mediaMuxer.addTrack(videoFormat);
 ```
 
-3\. 开始合成
+3、开始合成
 
 ```java
 mediaMuxer.start();
 ```
 
-4\. 循环将音频轨或视频轨的数据写到文件
+4、循环将音频轨或视频轨的数据写到文件
 
 ```java
  while (true) {
@@ -118,7 +120,7 @@ mediaMuxer.start();
  }
 ```
 
-5\. 完成后释放资源
+5、完成后释放资源
 
 ```java
 mediaMuxer.stop();
@@ -196,14 +198,10 @@ private void extractVideo() {
 }
 ```
 
-分离音频、合成音视频的代码类似，详见 GitHub 。
-
-## 源码
-
-[https://github.com/zywudev/AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
+分离音频、合成音视频的代码类似，详见 GitHub ：[AndroidMultiMediaLearning](https://github.com/zywudev/AndroidMultiMediaLearning)
 
 ## 参考
 
-https://blog.csdn.net/zhi184816/article/details/52514138
+1、[Android 视频分离和合成(MediaMuxer和MediaExtractor)](https://blog.csdn.net/zhi184816/article/details/52514138)
 
-https://www.cnblogs.com/renhui/p/7474096.html
+2、[Android 音视频开发(五)：使用 MediaExtractor 和 MediaMuxer API 解析和封装 mp4 文件](https://www.cnblogs.com/renhui/p/7474096.html)
